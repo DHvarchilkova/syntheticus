@@ -181,3 +181,5 @@ Vagrantfile
 
 static-files
 media-files
+
+frontend
