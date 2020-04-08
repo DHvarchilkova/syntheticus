@@ -9,6 +9,15 @@ const Wrapper = styled.div`
     height: 100vh;
 `;
 
+const Header = styled.div`
+    height: 30px;
+    width: 100%;
+    display: flex;
+    background-color: #ff9f63;
+    justify-content: space-between;
+    z-index: 1;
+`;
+
 const Logo = styled.img`
     height: 1100px;
     width: 100%;
@@ -20,29 +29,29 @@ const Tagline = styled.div`
     height: 200px;
     width: 100vw;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
 `;
 
 const Tagline1 = styled.h2`
     height: 100px;
-    width: 200px;
+    width: 180px;
     font-size: 36px;
-    color: #4eb1fc;
+    color: #ff9f63;
 `;
 
 const Tagline2 = styled.h2`
     height: 100px;
-    width: 400px;
+    width: 280px;
     font-size: 36px;
-    color: #8088fd;
+    color: #30afff;
 `;
 
 const Tagline3 = styled.h4`
     height: 100px;
-    width: 500px;
+    width: 280px;
     font-size: 36px;
-    color: #80fdf5;
+    color: #6375ff;
 `;
 
 
@@ -56,6 +65,7 @@ class Home extends Component {
                     <Tagline2>Without Sharing Data.</Tagline2>
                     <Tagline3>Built in Zurich, Switzerland.</Tagline3>
                 </Tagline>
+                <Header/>
             </Wrapper>
         )
     }
