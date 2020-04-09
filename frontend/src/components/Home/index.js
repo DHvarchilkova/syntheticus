@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-import logo from '../../assets/logo.jpg'
+import logo from '../../assets/logo.png'
 
 
 const Wrapper = styled.div`
