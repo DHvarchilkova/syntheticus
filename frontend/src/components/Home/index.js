@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-import Grow from '../Grow';
+import MainHeader from '../MainHeader';
 
 import logo from '../../assets/logo.png';
 import stock1 from '../../assets/stock1.jpg';
@@ -65,7 +65,7 @@ class Home extends Component {
     render() {
         return (
             <div>
-                <Grow />
+                <MainHeader />
                 <ContentWrapper>
                     <ContentContainer>
                         <ImageContainer>

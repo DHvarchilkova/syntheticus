@@ -25,10 +25,11 @@ const ContentContainer = styled.div`
     background-repeat: no-repeat;
 `;
 
-const LogInBlock = styled.div`
+const RegisterBlock = styled.div`
     width: 30vw;
-    height: 30vw;
-    margin-top: 10vw;
+    height: 60vw;
+    margin-top: 20vh;
+    margin-bottom: 5vh;
     background-color: rgba(242, 242, 242, 0.8);
     display: flex;
     flex-direction: column;
@@ -45,13 +46,13 @@ const Logo = styled.img`
 const UserNameField = styled.div`
     width: 20vw;
     height: 5vh;
-    margin-top: 7vh;
+    margin-top: 3vh;
 `;
 
 const PasswordField = styled.div`
     width: 20vw;
     height: 5vh;
-    margin-top: 2vh;
+    margin-top: 3vh;
 `;
 
 const LoginButton = styled.button`
@@ -79,24 +80,33 @@ padding: 0px 0px 0px 30px;
 `;
 
 
-class LogIn extends Component {
+class Register extends Component {
     render() {
         return (
             <div>
                 <MainHeader />
                 <ContentWrapper>
                 <ContentContainer>
-                    <LogInBlock>
+                    <RegisterBlock>
                         <Logo src={logo} />
                         <UserNameField>
-                            <LoginInput type="text" placeholder="Email" />
+                            <LoginInput type="text" placeholder="First Name" />
+                        </UserNameField>
+                        <UserNameField>
+                            <LoginInput type="text" placeholder="Last Name" />
+                        </UserNameField>
+                        <UserNameField>
+                            <LoginInput type="text" required='true' placeholder="Email*" />
                         </UserNameField>
                         <PasswordField>
-                            <LoginInput type="text" placeholder="Password" />
+                            <LoginInput type="password" required='true' placeholder="Password*" />
                         </PasswordField>
-                        <LoginButton>login</LoginButton>
-                        <ForgotPasswordSignUpText>Forgot Your Password? Click Here. | New User? Sign Up.</ForgotPasswordSignUpText>
-                    </LogInBlock>
+                        <PasswordField>
+                            <LoginInput type="password" required='true' placeholder="Confirm Password*" />
+                        </PasswordField>
+                        <LoginButton>register</LoginButton>
+                        <ForgotPasswordSignUpText>We don't share your data with anyone.</ForgotPasswordSignUpText>
+                    </RegisterBlock>
                 </ContentContainer>
                 </ContentWrapper>
             </div>
@@ -104,4 +114,4 @@ class LogIn extends Component {
     }
 }
 
-export default LogIn;
+export default Register;

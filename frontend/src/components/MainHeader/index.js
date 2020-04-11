@@ -68,7 +68,7 @@ const NavMenuText = styled.h3`
 `;
 
 
-class Grow extends Component {
+class MainHeader extends Component {
     render() {
         return (
             <div>
@@ -96,4 +96,4 @@ class Grow extends Component {
     }
 }
 
-export default Grow;
+export default MainHeader;
