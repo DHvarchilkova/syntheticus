@@ -5,6 +5,7 @@ import Home from '../components/Home';
 import MainHeader from '../components/MainHeader';
 import LogIn from '../components/LogIn';
 import Register from '../components/Register';
+import EmailValidation from "../components/EmailValidation";
 
 
 const Routes = () => {
@@ -15,6 +16,7 @@ const Routes = () => {
                 <Route exact path = '/mainheader' component={MainHeader} />
                 <Route exact path = '/login' component={LogIn} />
                 <Route exact path = '/register' component={Register} />
+                <Route exact path = '/verify' component={EmailValidation} />
             </Switch>
         </Router>
     )

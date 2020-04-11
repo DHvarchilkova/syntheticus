@@ -89,10 +89,10 @@ class LogIn extends Component {
                     <LogInBlock>
                         <Logo src={logo} />
                         <UserNameField>
-                            <LoginInput type="text" placeholder="Email" />
+                            <LoginInput type="text" placeholder="Email*" />
                         </UserNameField>
                         <PasswordField>
-                            <LoginInput type="text" placeholder="Password" />
+                            <LoginInput type="text" placeholder="Password*" />
                         </PasswordField>
                         <LoginButton>login</LoginButton>
                         <ForgotPasswordSignUpText>Forgot Your Password? Click Here. | New User? Sign Up.</ForgotPasswordSignUpText>
