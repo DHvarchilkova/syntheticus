@@ -6,6 +6,8 @@ import MainHeader from '../components/MainHeader';
 import LogIn from '../components/LogIn';
 import Register from '../components/Register';
 import EmailValidation from "../components/EmailValidation";
+import Body from "../components/Body";
+import Home2 from "../components/Home/index2";
 
 
 const Routes = () => {
@@ -13,10 +15,12 @@ const Routes = () => {
         <Router>
             <Switch>
                 <Route exact path = '/home' component={Home} />
+                <Route exact path = '/home2' component={Home2} />
                 <Route exact path = '/mainheader' component={MainHeader} />
                 <Route exact path = '/login' component={LogIn} />
                 <Route exact path = '/register' component={Register} />
                 <Route exact path = '/verify' component={EmailValidation} />
+                <Route exact path = '/body' component={Body} />
             </Switch>
         </Router>
     )

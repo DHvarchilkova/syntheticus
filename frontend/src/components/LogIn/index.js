@@ -12,14 +12,12 @@ const ContentWrapper = styled.div`
 `;
 
 const ContentContainer = styled.div`
-    width: 40vw;
+    width: 100vw;
     height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-left: 30vw;
-    margin-right: 30vw;
     background-image: url(${stock3});
     background-size: cover;
     background-repeat: no-repeat;
@@ -57,7 +55,7 @@ const PasswordField = styled.div`
 const LoginButton = styled.button`
     width: 10vw;
     height: 5vh;
-    margin-top: 3vh;
+    margin-top: 5vh;
     padding: 10px;
     border-radius: 5px;
     cursor: pointer;

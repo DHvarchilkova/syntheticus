@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 import MainHeader from '../MainHeader';
+import Footer from '../Footer';
 
-import logo from '../../assets/logo.png';
-import stock1 from '../../assets/stock1.jpg';
 import stock2 from '../../assets/stock2.jpg';
 import stock3 from '../../assets/stock3.jpg';
 import stock4 from '../../assets/stock4.jpg';
@@ -12,8 +11,10 @@ import chart from '../../assets/chart1.png';
 
 
 const ContentWrapper = styled.div`
-    width 100vw;
+    width: 100%;
+    height: 96vh;
     padding-top: 25vh;
+    overflow: auto;
 `;
 
 const ContentContainer = styled.div`;
@@ -99,6 +100,7 @@ class Home extends Component {
                         </Graphbox>
                     </ContentContainer>
                 </ContentWrapper>
+                <Footer />
             </div>
         )
     }

@@ -3,23 +3,22 @@ import styled from 'styled-components';
 
 import MainHeader from '../MainHeader';
 
+
 import logo from '../../assets/logo.png';
 import stock3 from '../../assets/stock3.jpg';
 
 
 const ContentWrapper = styled.div`
-    width 100vw;
+    width 100%;
 `;
 
 const ContentContainer = styled.div`
-    width: 40vw;
+    width: 100vw;
     height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-left: 30vw;
-    margin-right: 30vw;
     background-image: url(${stock3});
     background-size: cover;
     background-repeat: no-repeat;

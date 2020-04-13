@@ -11,13 +11,13 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     }
     html {
-        height: 100%;
+        height: 100vh;
     body {
-        height: 100%;
+        height: 100vh;
         background-color: #ffffff;
     }
     #root {
-        height: 100%;
+        height: 100vh;
 `;
 
 export const theme = {

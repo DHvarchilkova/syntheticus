@@ -5,7 +5,7 @@ import logo from '../../assets/logo.png';
 
 
 const HeaderWrapper = styled.div`
-    width: 100vw;
+    min-width: 100%;
     height: 13vh;
     position: fixed;
 `;
@@ -17,8 +17,8 @@ const Streamer = styled.div`
 
 const Header = styled.div`
     height: 13vh;
-    min-width: 600px;
-    background: #ffffff;
+    min-width: 100%;
+    background-color: #ffffff;
     box-shadow: 4px 0px 18px 1px rgba(0, 0, 0, 0.2);
     display: flex;
     justify-content: space-between;
@@ -85,8 +85,8 @@ class MainHeader extends Component {
                         <NavMenu>
                             <NavMenuText>Home</NavMenuText>
                             <NavMenuText>Solution</NavMenuText>
+                            <NavMenuText>Upload Data</NavMenuText>
                             <NavMenuText>About Us</NavMenuText>
-                            <NavMenuText>Contact</NavMenuText>
                             <NavMenuText>Login</NavMenuText>
                         </NavMenu>
                     </Header>
