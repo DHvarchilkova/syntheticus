@@ -8,6 +8,7 @@ import Register from '../components/Register';
 import EmailValidation from "../components/EmailValidation";
 import Body from "../components/Body";
 import Home2 from "../components/Home/index2";
+import Upload from "../components/Upload";
 
 
 const Routes = () => {
@@ -21,6 +22,7 @@ const Routes = () => {
                 <Route exact path = '/register' component={Register} />
                 <Route exact path = '/verify' component={EmailValidation} />
                 <Route exact path = '/body' component={Body} />
+                <Route exact path = '/upload' component={Upload} />
             </Switch>
         </Router>
     )

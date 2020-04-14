@@ -43,7 +43,7 @@ const Tagline = styled.div`
 `;
 
 const TaglineText = styled.p`
-    font-size: 24px;
+    font-size: 1.5em;
     font-weight: bold;
     background: -webkit-linear-gradient(#63c3ff, #8088fd);
     -webkit-background-clip: text;
