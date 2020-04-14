@@ -1,6 +1,6 @@
 from django.urls import path
 
-from backend.syntheticus.users.views import RetrieveUser, RetrieveUpdateDestroyLoggedInUser
+from syntheticus.users.views import RetrieveUser, RetrieveUpdateDestroyLoggedInUser
 
 urlpatterns = [
     # path('', ListUsers.as_view(), name='list-users'),

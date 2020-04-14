@@ -1,39 +1,38 @@
-
-from django.conf import settings
 from django.db import models
-import random
+from django.contrib.auth import get_user_model
+
+from syntheticus.emails.models import Email
+
+User = get_user_model()
+
+VALIDATION_TYPES = {
+    'UserRegistration': 'UR',
+    'PasswordReset': 'PR',
+}
+VALIDATION_TYPE_CHOICES = [(value, key) for value, key in enumerate(VALIDATION_TYPES)]
 
 
-def code_generator(length=5):
-    numbers = '0123456789'
-    return ''.join(random.choice(numbers) for _ in range(length))
+class EmailValidation(models.Model):
+    email = models.ForeignKey(to=Email, on_delete=models.SET_NULL, null=True)
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
+    validation_code = models.IntegerField()
+    type = models.CharField(max_length=2, choices=VALIDATION_TYPE_CHOICES)
+    code_used = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f'{self.email} : {VALIDATION_TYPES[self.type]} ({"Unused" if self.code_used else "Used"})'
 
 
-class RegistrationProfile(models.Model):
+class Profile(models.Model):
     user = models.OneToOneField(
         verbose_name='user',
+        related_name='profile',
+        to=User,
         on_delete=models.CASCADE,
-        related_name='registration_profile',
-        to=settings.AUTH_USER_MODEL
-    )
-    code = models.CharField(
-        verbose_name='code',
-        help_text='random code used for registration and for password reset',
-        max_length=15,
-        default=code_generator
-    )
-    code_type = models.CharField(
-        verbose_name='code type',
-        max_length=2,
-        choices=(
-            ('RV', 'Registration Validation'),
-            ('PR', 'Password Reset')
-        )
-    )
-    code_used = models.BooleanField(
-        verbose_name='code used',
-        default=False
+        unique=True,
+        primary_key=True,
     )
 
     def __str__(self):
-        return f'{self.user.email}, {self.code}'
+        return self.user.username

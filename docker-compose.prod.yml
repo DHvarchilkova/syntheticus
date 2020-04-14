@@ -38,7 +38,7 @@ services:
     restart: always
     env_file:
       - ./envs/.prod.env
-    command: 'python manage.py send_emails'
+    command: 'python manage.py send_mail'
     depends_on:
       - postgres
       - backend

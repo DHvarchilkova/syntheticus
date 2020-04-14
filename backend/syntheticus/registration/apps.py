@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
 
-class RegistrationConfig(AppConfig):
+class UserRegistrationConfig(AppConfig):
     name = 'syntheticus.registration'

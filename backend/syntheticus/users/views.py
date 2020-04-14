@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
 from rest_framework.generics import ListAPIView, RetrieveAPIView, RetrieveUpdateDestroyAPIView
 
-from backend.syntheticus.users.serializers import UserSerializer
+from syntheticus.users.serializers import UserSerializer
 
 User = get_user_model()
 

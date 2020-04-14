@@ -1,17 +1,20 @@
 from abc import ABC
+from random import randrange
 
-from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
+from django.contrib.auth import get_user_model
+
 from rest_framework import serializers
-# from backend.syntheticus.emails.models import Email
-from .models import RegistrationProfile
-from .models import code_generator
-from .signals import post_user_registration_validation, post_user_password_reset_validation
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+
+from .models import EmailValidation
+from ..emails.models import Email
+from ..users.serializers import FullUserSerializer
 
 User = get_user_model()
 
 
-def email_does_not_exist(email):
+def user_with_email_not_existing(email):
     try:
         User.objects.get(email=email)
         raise ValidationError(message='This email is taken')
@@ -27,120 +30,79 @@ def email_does_exist(email):
         raise ValidationError(message='User does not exist!')
 
 
-def username_does_not_exist(username):
-    try:
-        User.objects.get(username=username)
-        raise ValidationError(message='This username is taken')
-    except User.DoesNotExist:
-        return username
+class CreatePasswordEmailValidationSerializer(serializers.Serializer):
+    email = serializers.EmailField(validators=[email_does_exist])
 
-
-def code_is_valid(code):
-    try:
-        reg_profile = RegistrationProfile.objects.get(code=code)
-        if not reg_profile.code_used:
-            return code
-        else:
-            raise ValidationError(message='This code has already been used!')
-    except RegistrationProfile.DoesNotExist:
-        raise ValidationError(message='This code is not valid!')
-
-
-class RegistrationSerializer(serializers.Serializer):
-    email = serializers.EmailField(label='Registration E-Mail Address', validators=[email_does_not_exist])
-
-    def save(self, validated_data):
-        email = validated_data.get('email')
-        new_user = User(
-            username=email,
+    def save(self):
+        validation_code = randrange(10000000, 100000000)
+        email = Email.objects.create(
+            validation_code=validation_code,
+            to=self.validated_data.get('email'),
+            type=self.validated_data.get('type')
+        )
+        new_validation = EmailValidation.objects.create(
+            validation_code=validation_code,
             email=email,
-            is_active=False,
+            type=self.validated_data.get('type'))
+        return new_validation
+
+class CreateEmailValidationSerializer(serializers.Serializer):
+    email = serializers.EmailField(validators=[user_with_email_not_existing])
+
+    def save(self):
+        validation_code = randrange(10000000, 100000000)
+        email = Email.objects.create(
+            validation_code=validation_code,
+            to=self.validated_data.get('email'),
+            type=self.validated_data.get('type')
         )
-        new_user.save()
-        #####
-        # Creating reg profile here and not with signal because signals are async
-        # and I need the code in the reg profile right now.
-        reg_profile = RegistrationProfile(
-            user=new_user,
-            code_type='RV'
-        )
-        reg_profile.save()
-        #####
-        email = Email(to=email, subject='Thank you for registering!',
-                      content=f'Here is your validation code: {reg_profile.code}')
-        email.save(request=self.context['request'])
-        return new_user
+        new_validation = EmailValidation.objects.create(
+            validation_code=validation_code,
+            email=email,
+            type=self.validated_data.get('type'))
+        return new_validation
+
+class EmailSerializer(serializers.ModelSerializer):
+    email = serializers.EmailField()
+
+    class Meta:
+        model = EmailValidation
+        fields = ['email']
 
 
-class RegistrationValidationSerializer(serializers.Serializer):
-    email = serializers.EmailField(label='Registration E-Mail Address', validators=[email_does_exist])
-    username = serializers.CharField(label='Username', validators=[username_does_not_exist])
-    code = serializers.CharField(label='Validation code', write_only=True, validators=[code_is_valid])
-    password = serializers.CharField(label='password', write_only=True)
-    password_repeat = serializers.CharField(label='password_repeat', write_only=True)
+class EmailValidationSerializer(serializers.ModelSerializer):
+    email = serializers.EmailField()
 
-    def validate(self, data):
-        code = data.get('code')
-        email = data.get('email')
-        user = User.objects.get(email=email)
-        reg_profile = RegistrationProfile.objects.get(code=code)
-        if reg_profile != user.registration_profile:
-            raise ValidationError(message='The code does not belong to this email!')
-        if data.get('password') != data.get('password_repeat'):
-            raise ValidationError(message='Passwords do not match!')
+    class Meta:
+        model = EmailValidation
+        fields = ['email', 'validation_code']
+
+
+class EmailValidationPasswordSerializer(serializers.ModelSerializer):
+    email = serializers.EmailField()
+    password = serializers.CharField(max_length=200)
+
+    class Meta:
+        model = EmailValidation
+        fields = ['email', 'validation_code', 'password']
+
+
+class NewUserSerializer(serializers.ModelSerializer):
+    email = serializers.EmailField()
+
+    class Meta:
+        model = EmailValidation
+        fields = ['email']
+
+
+class TokenObtainPairViewWithUserProfileSerializer(TokenObtainPairSerializer):
+    def validate(self, attrs):
+        data = super().validate(attrs)
+
+        refresh = self.get_token(self.user)
+
+        data['refresh'] = str(refresh)
+        data['access'] = str(refresh.access_token)
+
+        data['user'] = FullUserSerializer(self.user).data
         return data
-
-    def save(self, validated_data):
-        email = validated_data.get('email')
-        user = User.objects.get(email=email)
-        user.username = validated_data.get('username')
-        user.is_active = True
-        user.set_password(validated_data.get('password'))
-        user.registration_profile.code_used = True
-        user.save()
-        user.registration_profile.save()
-        post_user_registration_validation.send(sender=User, user=user)
-        return user
-
-
-class PasswordResetSerializer(serializers.Serializer):
-    email = serializers.EmailField(label='Password Reset E-Mail Address', validators=[email_does_exist])
-
-    def send_password_reset_email(self):
-        email = self.validated_data.get('email')
-        user = User.objects.get(email=email)
-        user.registration_profile.code = code_generator()
-        user.registration_profile.code_used = False
-        user.registration_profile.code_type = 'PR'
-        user.registration_profile.save()
-        email = Email(to=email, subject='Password reset',
-                      content=f'Here is your password reset code: {user.registration_profile.code}')
-        email.save(request=self.context['request'])
-
-
-class PasswordResetValidationSerializer(serializers.Serializer):
-    code = serializers.CharField(label='Validation code', write_only=True, validators=[code_is_valid])
-    email = serializers.EmailField(label='Registration E-Mail Address', validators=[email_does_exist])
-    password = serializers.CharField(label='password', write_only=True)
-    password_repeat = serializers.CharField(label='password_repeat', write_only=True)
-
-    def validate(self, data):
-        code = data.get('code')
-        email = data.get('email')
-        user = User.objects.get(email=email)
-        reg_profile = RegistrationProfile.objects.get(code=code)
-        if reg_profile != user.registration_profile:
-            raise ValidationError(message='The code does not belong to this email!')
-        if data.get('password') != data.get('password_repeat'):
-            raise ValidationError(message='Passwords do not match!')
-        return data
-
-    def save(self, validated_data):
-        code = validated_data.get('code')
-        user = RegistrationProfile.objects.get(code=code).user
-        user.set_password(validated_data.get('password'))
-        user.registration_profile.code_used = True
-        user.save()
-        user.registration_profile.save()
-        post_user_password_reset_validation.send(sender=User, user=user)
-        return user

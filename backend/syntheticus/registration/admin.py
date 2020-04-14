@@ -1,8 +1,7 @@
 from django.contrib import admin
-from .models import RegistrationProfile
+from .models import EmailValidation
 from django.contrib import admin
 
-admin.site.register(RegistrationProfile)
+admin.site.register(EmailValidation)
 
 
-# Register your models here.
