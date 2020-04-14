@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 import Body from '../Body';
+import { BlueButton } from "../../styles/GlobalButtons";
 
 import logo from '../../assets/logo.png';
 import stock3 from '../../assets/stock3.jpg';
@@ -46,6 +47,7 @@ const DragDropContainer = styled.div`
     height: 72%;
     width: 37%;
     margin-left: 10%;
+    margin-top: 6%;
 `;
 
 const DragDropField = styled.div`
@@ -54,13 +56,26 @@ const DragDropField = styled.div`
     margin-top: 3%;
     margin-left: 3%;
     background: #ffffff;
+    outline: dashed #63c3ff;
+    outline-offset: -10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
 `;
+
 
 const MenuText = styled.p`
     font-size: 1.2em;
     font-weight: bold;
     margin-top: 3%;
     margin-left: 3%;
+`;
+
+const UploadButton = styled(BlueButton)`
+    width: 150px;
+    height: 40px;
+    margin-bottom: 20px;
 `;
 
 
@@ -77,7 +92,9 @@ class Upload extends Component {
                         </LeftMenu>
                         <DragDropContainer>
                             <MenuText>Launch A Run</MenuText>
-                            <DragDropField></DragDropField>
+                            <DragDropField>
+                                <UploadButton>upload file</UploadButton>
+                            </DragDropField>
                         </DragDropContainer>
                     </UploadBlock>
 

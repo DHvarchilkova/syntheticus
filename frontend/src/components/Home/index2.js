@@ -3,11 +3,11 @@ import styled from 'styled-components';
 
 import MainHeader from '../MainHeader';
 import Footer from '../Footer';
-import { BlueButton } from '../../styles/GlobalButtons'
-
+import { BlueButton } from '../../styles/GlobalButtons';
 
 import chart from '../../assets/chart1.png';
 import stock4 from '../../assets/stock4.jpg';
+import stock3 from '../../assets/stock3.jpg';
 
 
 const ContentWrapper = styled.div`
@@ -78,6 +78,17 @@ const ButtonContainer = styled.div`
     margin-right: 20%;
 `;
 
+const ThirdContainer = styled.div`
+    width: 100%;
+    height: 84vh;
+    display: flex;
+    justify-content: space-around;
+    background-image: url(${stock3});
+    background-size: cover;
+    background-repeat: no-repeat;
+`;
+
+
 class Home2 extends Component {
     render() {
         return (
@@ -103,6 +114,8 @@ class Home2 extends Component {
                             <ButtonContainer><BlueButton>get started</BlueButton></ButtonContainer>
                         </ExampleRightHalf>
                     </SecondContainer>
+                    <ThirdContainer>
+                    </ThirdContainer>
                 </ContentWrapper>
                 <Footer />
             </div>
