@@ -10,9 +10,14 @@ export const GlobalStyle = createGlobalStyle`
     color: #353535;
     box-sizing: border-box;
     }
+    html {
+        height: 100vh;
     body {
+        height: 100vh;
         background-color: #ffffff;
     }
+    #root {
+        height: 100vh;
 `;
 
 export const theme = {
@@ -20,4 +25,5 @@ export const theme = {
     houseblue: '#63c3ff',
     accentblue: '#4eb1fc',
     accentpurple: '#8088fd',
+    accentorange: '#ff9f63',
 };
