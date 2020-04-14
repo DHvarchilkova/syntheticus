@@ -11,6 +11,5 @@ class User(AbstractUser):
 
     email = models.EmailField(unique=True)
 
-
     def __str__(self):
         return f'User {self.id}: {self.email}'

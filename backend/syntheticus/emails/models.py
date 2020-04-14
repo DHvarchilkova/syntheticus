@@ -42,4 +42,3 @@ class Email(models.Model):
 
     def __str__(self):
         return f'Email {self.type} to {self.to}'
-

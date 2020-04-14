@@ -1,4 +1,3 @@
-from abc import ABC
 from random import randrange
 
 from django.core.exceptions import ValidationError
@@ -46,6 +45,7 @@ class CreatePasswordEmailValidationSerializer(serializers.Serializer):
             type=self.validated_data.get('type'))
         return new_validation
 
+
 class CreateEmailValidationSerializer(serializers.Serializer):
     email = serializers.EmailField(validators=[user_with_email_not_existing])
 
@@ -61,6 +61,7 @@ class CreateEmailValidationSerializer(serializers.Serializer):
             email=email,
             type=self.validated_data.get('type'))
         return new_validation
+
 
 class EmailSerializer(serializers.ModelSerializer):
     email = serializers.EmailField()
