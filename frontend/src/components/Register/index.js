@@ -1,20 +1,16 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-import MainHeader from '../MainHeader';
+import Body from '../Body';
 
 
 import logo from '../../assets/logo.png';
 import stock3 from '../../assets/stock3.jpg';
 
 
-const ContentWrapper = styled.div`
-    width 100%;
-`;
-
 const ContentContainer = styled.div`
     width: 100vw;
-    height: 100vh;
+    height: 96vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -85,9 +81,7 @@ padding: 0px 0px 0px 30px;
 class Register extends Component {
     render() {
         return (
-            <div>
-                <MainHeader />
-                <ContentWrapper>
+            <Body>
                 <ContentContainer>
                     <RegisterBlock>
                         <Logo src={logo} />
@@ -99,8 +93,7 @@ class Register extends Component {
                         <ForgotPasswordSignUpText>We don't share your data.</ForgotPasswordSignUpText>
                     </RegisterBlock>
                 </ContentContainer>
-                </ContentWrapper>
-            </div>
+            </Body>
         )
     }
 }
