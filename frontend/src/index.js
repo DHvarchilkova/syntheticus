@@ -5,9 +5,19 @@ import * as serviceWorker from './serviceWorker';
 
 import {ThemeProvider} from 'styled-components';
 import {GlobalStyle, theme} from './styles';
+import store from "./store/index";
+
+
 
 import Routes from './routes';
+import {userLoginDispatch} from "./store/actions/loginActions";
 
+// Setting up the token for all the components:
+const token = localStorage.getItem("token");
+if (token) {
+  store.dispatch(userLoginDispatch(token));
+
+}
 
 ReactDOM.render(
   <React.StrictMode>
