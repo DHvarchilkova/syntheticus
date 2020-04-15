@@ -26,7 +26,7 @@ const ContentContainer = styled.div`
 
 const LogInBlock = styled.div`
     width: 30vw;
-    height: 30vw;
+    height: 70vh;
     margin-top: 18vh;
     background-color: rgba(242, 242, 242, 0.8);
     display: flex;
@@ -38,18 +38,26 @@ const Logo = styled.img`
     width: 146px;
     height: 155px;
     margin-top: 29px;
+    margin-bottom: 5vh;
+`;
+
+const RegisterText = styled.p`
+    width: 20vw;
+    margin-bottom: 3vh;
+    text-align: center;
+    line-height: 1.5em;
 `;
 
 const UserNameField = styled.div`
     width: 20vw;
     height: 5vh;
-    margin-top: 7vh;
+    margin-top: 2vh;
 `;
 
 const LoginButton = styled.button`
     width: 10vw;
-    height: 5vh;
-    margin-top: 8vh;
+    height: 6vh;
+    margin-top: 3vh;
     padding: 10px;
     border-radius: 5px;
     cursor: pointer;
@@ -75,8 +83,18 @@ class EmailValidation extends Component {
                 <ContentContainer>
                     <LogInBlock>
                         <Logo src={logo} />
+                        <RegisterText>Thank you. Please fill out these fields to complete your registration.</RegisterText>
                         <UserNameField>
                             <LoginInput type="text" placeholder="Your Verification Code*" />
+                        </UserNameField>
+                         <UserNameField>
+                            <LoginInput type="text" placeholder="Create Username*" />
+                        </UserNameField>
+                        <UserNameField>
+                            <LoginInput type="text" required='true' placeholder="Email*" />
+                        </UserNameField>
+                        <UserNameField>
+                            <LoginInput type="password" required='true' placeholder="Password*" />
                         </UserNameField>
                         <LoginButton>complete registration</LoginButton>
                     </LogInBlock>
