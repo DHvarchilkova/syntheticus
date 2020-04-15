@@ -23,25 +23,17 @@ const UploadBlock = styled.div`
     margin-top: 16.5vh;
     background-color: rgba(242, 242, 242, 0.9);
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding-left: 5%;
-`;
-
-const SubContainer = styled.div`
-    height: 72%;
-    width: 30%;
-    margin-top: 6%;
+    justify-content: center;
 `;
 
 const DragDropField = styled.div`
-    height: 60%;
-    width: 75%;
-    margin-top: 3%;
+    height: 80%;
+    width: 85%;
+    margin-top: 4%;
     background: #ffffff;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
 `;
 
@@ -55,8 +47,7 @@ const MenuText = styled.p`
 const UploadButton = styled(WhiteButton)`
     width: 165px;
     height: 40px;
-    margin-top: 40px;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
 `;
 
 
@@ -66,25 +57,11 @@ class Upload extends Component {
             <Body>
                 <FirstContainer>
                     <UploadBlock>
-                        <SubContainer>
-                            <MenuText>Submit A Dataset (.gz .csv)</MenuText>
                             <DragDropField>
+                                <MenuText>Submit A Dataset (.gz .csv)</MenuText>
                                 <Dropzone />
                                 <UploadButton>upload</UploadButton>
                             </DragDropField>
-                        </SubContainer>
-                        <SubContainer>
-                            <MenuText>Choose Specifications</MenuText>
-                            <DragDropField>
-
-                            </DragDropField>
-                        </SubContainer>
-                        <SubContainer>
-                            <MenuText>Choose Specifications</MenuText>
-                            <DragDropField>
-
-                            </DragDropField>
-                        </SubContainer>
                     </UploadBlock>
                 </FirstContainer>
             </Body>

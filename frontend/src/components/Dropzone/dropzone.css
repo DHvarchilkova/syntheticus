@@ -1,6 +1,6 @@
 .Dropzone {
-    height: 200px;
-    width: 200px;
+    height: 300px;
+    width: 300px;
     background-color: #ffffff;
     border: 2px dashed rgb(99, 195, 255);
     border-radius: 50%;
@@ -19,7 +19,7 @@
 }
 
 .Icon {
-    height: 64px;
-    width: 64px;
-    margin-bottom: 32px;
+    height: 94px;
+    width: 94px;
+    margin-bottom: 52px;
 }
