@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
+import propulsionLogo from '../../assets/propulsion_hor.png';
 
 const FooterWrapper = styled.div`
     width: 100%;
@@ -31,6 +32,12 @@ const FooterTextContainer = styled.div`
 
 const FooterText =  styled.p`
     font-size: 12px;
+    margin-bottom: 7px;
+    margin-right: 7px;
+`;
+
+const PropulsionLogo = styled.img`
+    height: 3.5vh;
 `;
 
 
@@ -45,6 +52,7 @@ class Footer extends Component {
                         </SocialMediaIconContainer>
                         <FooterTextContainer>
                             <FooterText>Syntheticus. Built at Propulsion Academy in Zurich, Switzerland.</FooterText>
+                            <PropulsionLogo src={ propulsionLogo }/>
                         </FooterTextContainer>
                     </FooterContainer>
                 </FooterWrapper>

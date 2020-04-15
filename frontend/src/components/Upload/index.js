@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import Body from '../Body';
 import Dropzone from '../Dropzone/dropzone';
-import { BlueButton } from "../../styles/GlobalButtons";
+import { MenuButton } from "../../styles/GlobalButtons";
 
 import stock3 from '../../assets/stock3.jpg';
 
@@ -51,13 +51,11 @@ const DragDropContainer = styled.div`
 `;
 
 const DragDropField = styled.div`
-    height: 40%;
+    height: 60%;
     width: 75%;
     margin-top: 3%;
     margin-left: 3%;
     background: #ffffff;
-    outline: dashed #63c3ff;
-    outline-offset: -10px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -72,9 +70,10 @@ const MenuText = styled.p`
     margin-left: 3%;
 `;
 
-const UploadButton = styled(BlueButton)`
+const UploadButton = styled(MenuButton)`
     width: 165px;
     height: 40px;
+    margin-top: 40px;
     margin-bottom: 20px;
 `;
 
@@ -85,16 +84,11 @@ class Upload extends Component {
             <Body>
                 <FirstContainer>
                     <UploadBlock>
-                        <LeftMenu>
-                            <UploadNavigation>Runs</UploadNavigation>
-                            <UploadNavigation>Account</UploadNavigation>
-                            <UploadNavigation>Documentation</UploadNavigation>
-                        </LeftMenu>
                         <DragDropContainer>
-                            <MenuText>Launch A Run</MenuText>
+                            <MenuText>Submit A Dataset (.gzip .csv)</MenuText>
                             <DragDropField>
                                 <Dropzone />
-                                <UploadButton>upload dataset</UploadButton>
+                                <UploadButton>upload</UploadButton>
                             </DragDropField>
                         </DragDropContainer>
                     </UploadBlock>

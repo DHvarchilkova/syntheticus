@@ -13,3 +13,15 @@ export const BlueButton = styled.button`
     text-transform: uppercase;
     border: none;
 `;
+
+export const MenuButton = styled.button`
+    width: 10vw;
+    height: 5vh;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    border-style: none;
+    text-transform: uppercase;
+    background-color: #63c3ff;
+`;
