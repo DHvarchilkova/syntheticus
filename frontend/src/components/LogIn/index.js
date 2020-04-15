@@ -38,18 +38,14 @@ const Logo = styled.img`
     width: 146px;
     height: 155px;
     margin-top: 10px;
+    margin-bottom: 10px;
 `;
 
 const UserNameField = styled.div`
     width: 20vw;
-    height: 5vh;
-    margin-top: 7vh;
-`;
-
-const PasswordField = styled.div`
-    width: 20vw;
-    height: 5vh;
+    height: 3vh;
     margin-top: 2vh;
+    margin-bottom: 2vh;
 `;
 
 const LoginButton = styled.button`
@@ -66,8 +62,7 @@ const LoginButton = styled.button`
 `;
 
 const ForgotPasswordSignUpText = styled.p`
-    font-size: 0.75em;
-    margin-top: 5vh;
+    margin-top: 3vh;
 `;
 
 const LoginInput = styled.input`
@@ -87,13 +82,17 @@ class LogIn extends Component {
                     <LogInBlock>
                         <Logo src={logo} />
                         <UserNameField>
+                            <LoginInput type="text" placeholder="Username*" />
+                        </UserNameField>
+                        <UserNameField>
                             <LoginInput type="text" placeholder="Email*" />
                         </UserNameField>
-                        <PasswordField>
+                        <UserNameField>
                             <LoginInput type="text" placeholder="Password*" />
-                        </PasswordField>
+                        </UserNameField>
                         <LoginButton>login</LoginButton>
-                        <ForgotPasswordSignUpText>Forgot Your Password? Click Here. | New User? Sign Up.</ForgotPasswordSignUpText>
+                        <ForgotPasswordSignUpText>Forgot Your Password? Click Here. | New User? <a href={"/register"} style={{ textDecoration: 'none' }}>Sign Up.</a>
+                        </ForgotPasswordSignUpText>
                     </LogInBlock>
                 </ContentContainer>
                 </ContentWrapper>

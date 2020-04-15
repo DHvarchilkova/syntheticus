@@ -26,7 +26,7 @@ const ContentContainer = styled.div`
 
 const RegisterBlock = styled.div`
     width: 30vw;
-    height: 60vw;
+    height: 60vh;
     margin-top: 20vh;
     margin-bottom: 5vh;
     background-color: rgba(242, 242, 242, 0.8);
@@ -39,25 +39,28 @@ const RegisterBlock = styled.div`
 const Logo = styled.img`
     width: 146px;
     height: 155px;
-    margin-top: 10px;
+    margin-top: 2vh;
+    margin-bottom: 5vh;
+`;
+
+const RegisterText = styled.p`
+    width: 20vw;
+    margin-bottom: 2vh;
+    text-align: center;
+    line-height: 1.5em;
 `;
 
 const UserNameField = styled.div`
     width: 20vw;
     height: 5vh;
     margin-top: 3vh;
-`;
-
-const PasswordField = styled.div`
-    width: 20vw;
-    height: 5vh;
-    margin-top: 3vh;
+    margin-bottom: 2vh;
 `;
 
 const LoginButton = styled.button`
     width: 10vw;
     height: 5vh;
-    margin-top: 3vh;
+    margin-top: 4vh;
     padding: 10px;
     border-radius: 5px;
     cursor: pointer;
@@ -88,21 +91,10 @@ class Register extends Component {
                 <ContentContainer>
                     <RegisterBlock>
                         <Logo src={logo} />
-                        <UserNameField>
-                            <LoginInput type="text" placeholder="First Name" />
-                        </UserNameField>
-                        <UserNameField>
-                            <LoginInput type="text" placeholder="Last Name" />
-                        </UserNameField>
+                        <RegisterText>Please enter your email address. We will send you a verification code to complete your registration.</RegisterText>
                         <UserNameField>
                             <LoginInput type="text" required='true' placeholder="Email*" />
                         </UserNameField>
-                        <PasswordField>
-                            <LoginInput type="password" required='true' placeholder="Password*" />
-                        </PasswordField>
-                        <PasswordField>
-                            <LoginInput type="password" required='true' placeholder="Confirm Password*" />
-                        </PasswordField>
                         <LoginButton>register</LoginButton>
                         <ForgotPasswordSignUpText>We don't share your data.</ForgotPasswordSignUpText>
                     </RegisterBlock>

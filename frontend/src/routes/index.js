@@ -16,11 +16,11 @@ const Routes = () => {
         <Router>
             <Switch>
                 <Route exact path = '/home' component={Home} />
-                <Route exact path = '/home2' component={Home2} />
+                <Route exact path = '/' component={Home2} />
                 <Route exact path = '/mainheader' component={MainHeader} />
                 <Route exact path = '/login' component={LogIn} />
                 <Route exact path = '/register' component={Register} />
-                <Route exact path = '/verify' component={EmailValidation} />
+                <Route exact path = '/complete' component={EmailValidation} />
                 <Route exact path = '/body' component={Body} />
                 <Route exact path = '/upload' component={Upload} />
             </Switch>

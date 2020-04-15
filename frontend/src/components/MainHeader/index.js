@@ -83,11 +83,11 @@ class MainHeader extends Component {
                             </Tagline>
                         </LogoTaglineContainer>
                         <NavMenu>
-                            <NavMenuText>Home</NavMenuText>
-                            <NavMenuText>Solution</NavMenuText>
-                            <NavMenuText>Upload Data</NavMenuText>
-                            <NavMenuText>About Us</NavMenuText>
-                            <NavMenuText>Login</NavMenuText>
+                            <NavMenuText><a href={"/"} style={{ textDecoration: 'none' }}>Home</a></NavMenuText>
+                            <NavMenuText><a href={"/"} style={{ textDecoration: 'none' }}>Solution</a></NavMenuText>
+                            <NavMenuText><a href={"/upload"} style={{ textDecoration: 'none' }}>Upload Data</a></NavMenuText>
+                            <NavMenuText><a href={"/about"} style={{ textDecoration: 'none' }}>About Us</a></NavMenuText>
+                            <NavMenuText><a href={"/login"} style={{ textDecoration: 'none' }}>Login</a></NavMenuText>
                         </NavMenu>
                     </Header>
                 </HeaderWrapper>
