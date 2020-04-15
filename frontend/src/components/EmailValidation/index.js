@@ -27,7 +27,7 @@ const ContentContainer = styled.div`
 const LogInBlock = styled.div`
     width: 30vw;
     height: 70vh;
-    margin-top: 18vh;
+    margin-top: 15vh;
     background-color: rgba(242, 242, 242, 0.8);
     display: flex;
     flex-direction: column;
