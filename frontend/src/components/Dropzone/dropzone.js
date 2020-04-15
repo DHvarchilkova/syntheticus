@@ -85,7 +85,7 @@ class Dropzone extends Component {
           className="Icon"
           src={logo}
         />
-        <span>Upload Files</span>
+        <span>Click to add a File</span>
       </div>
     )
   }
