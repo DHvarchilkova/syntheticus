@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 import Body from '../Body';
+import Dropzone from '../Dropzone/dropzone';
 import { BlueButton } from "../../styles/GlobalButtons";
 
-import logo from '../../assets/logo.png';
 import stock3 from '../../assets/stock3.jpg';
 
 
@@ -26,7 +26,7 @@ const UploadBlock = styled.div`
 `;
 
 const LeftMenu = styled.div`
-    width: 20%;
+    width: 10%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -73,7 +73,7 @@ const MenuText = styled.p`
 `;
 
 const UploadButton = styled(BlueButton)`
-    width: 150px;
+    width: 165px;
     height: 40px;
     margin-bottom: 20px;
 `;
@@ -93,11 +93,11 @@ class Upload extends Component {
                         <DragDropContainer>
                             <MenuText>Launch A Run</MenuText>
                             <DragDropField>
-                                <UploadButton>upload file</UploadButton>
+                                <Dropzone />
+                                <UploadButton>upload dataset</UploadButton>
                             </DragDropField>
                         </DragDropContainer>
                     </UploadBlock>
-
                 </FirstContainer>
             </Body>
         )
