@@ -14,5 +14,5 @@ myForm.addEventListener("submit", e => {
         method: 'POST',
         body: formData
     }
-    fetch('http://localhost:3000/backend/api/users/', config)
+    fetch('http://syntheticus.propulsion-learn.ch/backend/api/upload', config)
 })
