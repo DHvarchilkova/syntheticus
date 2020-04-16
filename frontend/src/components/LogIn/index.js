@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-import MainHeader from '../MainHeader';
+import Body from '../Body';
 
 import logo from '../../assets/logo.png';
 import stock3 from '../../assets/stock3.jpg';
 
-
-const ContentWrapper = styled.div`
-    width 100vw;
-`;
 
 const ContentContainer = styled.div`
     width: 100vw;
@@ -75,9 +71,7 @@ padding: 0px 0px 0px 30px;
 class LogIn extends Component {
     render() {
         return (
-            <div>
-                <MainHeader />
-                <ContentWrapper>
+            <Body>
                 <ContentContainer>
                     <LogInBlock>
                         <Logo src={logo} />
@@ -95,8 +89,7 @@ class LogIn extends Component {
                         </ForgotPasswordSignUpText>
                     </LogInBlock>
                 </ContentContainer>
-                </ContentWrapper>
-            </div>
+            </Body>
         )
     }
 }

@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
+import React, {Component } from 'react';
 import styled from 'styled-components';
 
 import Body from '../Body';
-
 
 import logo from '../../assets/logo.png';
 import stock3 from '../../assets/stock3.jpg';
