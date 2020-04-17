@@ -1,8 +1,10 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
+import {useHistory} from 'react-router-dom';
 
 import Body from '../Body';
-
+import {registrationAction} from '../../store/actions/registrationActions';
 
 import logo from '../../assets/logo.png';
 import stock3 from '../../assets/stock3.jpg';
@@ -78,24 +80,38 @@ padding: 0px 0px 0px 30px;
 `;
 
 
-class Register extends Component {
-    render() {
-        return (
+const Register = (props) => {
+
+    const [email, setEmail] = useState('');
+    const history = useHistory();
+    const userRegistrationHandler = async (e) => {
+        console.log('in userreghandler');
+        e.preventDefault();
+        const data = {
+            emailverification: email
+        };
+
+        const emailverified = await props.dispatch(registrationAction(data));
+        if (emailverified){
+            history.push("/register/complete");
+        }
+    };
+
+        return(
             <Body>
                 <ContentContainer>
                     <RegisterBlock>
                         <Logo src={logo} />
                         <RegisterText>Please enter your email address. We will send you a verification code to complete your registration.</RegisterText>
                         <UserNameField>
-                            <LoginInput type="text" required='true' placeholder="Email*" />
+                            <LoginInput type="text" required='true' placeholder="Email*" onChange={(e) => setEmail(e.currentTarget.value)}/>
                         </UserNameField>
-                        <LoginButton>register</LoginButton>
+                        <LoginButton type='submit' onClick={userRegistrationHandler}>register</LoginButton>
                         <ForgotPasswordSignUpText>We don't share your data.</ForgotPasswordSignUpText>
                     </RegisterBlock>
                 </ContentContainer>
             </Body>
         )
-    }
 }
 
-export default Register;
+export default connect()(Register);
