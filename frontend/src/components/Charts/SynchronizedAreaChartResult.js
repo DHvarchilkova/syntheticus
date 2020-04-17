@@ -18,8 +18,8 @@ export default class SynchronizedAreaChartResult extends PureComponent {
             <div>
         <h4>A demo of synchronized AreaCharts</h4>
         <AreaChart
-          width={500}
-          height={200}
+          width={800}
+          height={300}
           data={data}
           syncId="anyId"
           margin={{
@@ -34,8 +34,8 @@ export default class SynchronizedAreaChartResult extends PureComponent {
         </AreaChart>
         <p>Maybe some other content</p>
         <AreaChart
-          width={500}
-          height={200}
+          width={800}
+          height={300}
           data={data}
           syncId="anyId"
           margin={{
