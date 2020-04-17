@@ -4,7 +4,7 @@ import {BarChart, Bar, XAxis, YAxis, ResponsiveContainer} from "recharts";
 
 class ResultsBarChart extends Component {
     constructor () {
-        super();
+        super(props);
         this.state = {
             data: []
         };
@@ -28,4 +28,4 @@ class ResultsBarChart extends Component {
         )}
 }
 
-export  default class ResultsBarChart;
+export default class ResultsBarChart;

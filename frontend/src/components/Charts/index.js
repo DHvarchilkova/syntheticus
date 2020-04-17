@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer }
+import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Label, Tooltip, Legend, ResponsiveContainer }
     from 'recharts';
 
 import Body from '../Body';
@@ -39,8 +39,10 @@ export default class Charts extends PureComponent {
                         }}
                         >
                             <CartesianGrid strokeDasharray="3 3" />
-                            <XAxis dataKey="name" />
-                            <YAxis />
+                            <XAxis dataKey="name" label={{ value: "Workplace", position: "insideBottomLeft", dy: 20}} />
+                            <YAxis unit="%">
+                                <Label value="percentage" position="insideTopLeft" offset={10} />
+                            </YAxis>
                             <Tooltip />
                             <Legend />
                             <Bar dataKey="real" fill="#8884d8" />
