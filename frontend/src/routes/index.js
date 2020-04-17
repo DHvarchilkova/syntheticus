@@ -11,7 +11,7 @@ import Home2 from "../components/Home/index2";
 import Upload from "../components/Upload";
 import ChooseOptions from "../components/ChooseOptions";
 import Charts from "../components/Charts";
-import TestChart from "../components/Charts/testChart";
+import TestChart from "../components/Charts/BarChartResult";
 
 
 const Routes = () => {
