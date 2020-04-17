@@ -22,7 +22,7 @@ urlpatterns = [
     path('backend/admin/', admin.site.urls),
     path('backend/api/auth/', include('syntheticus.registration.urls')),
     path('backend/api/me/', include('syntheticus.users.urls')),
-    path('backend/api/upload', include('syntheticus.datasets.urls')),
+    path('backend/api/datasets/', include('syntheticus.datasets.urls')),
 
 ]
 

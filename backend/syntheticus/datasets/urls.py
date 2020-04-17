@@ -1,6 +1,7 @@
 from django.urls import path
-from .views import DatasetUploadView
+from .views import DatasetUploadView, ListDatasetsView
 
 urlpatterns = [
-    path('', DatasetUploadView.as_view())
+    path('upload', DatasetUploadView.as_view()),
+    path('list/<str:user_username>', ListDatasetsView.as_view())
 ]
