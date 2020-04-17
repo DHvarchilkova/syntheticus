@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import Body from '../Body';
 import BarChartResult from "./BarChartResult";
 import HeatMapResult from "./HeatMapResult";
+import RadarChartResult from "./RadarChartResult";
+import SynchronizedAreaChartResult from "./SynchronizedAreaChartResult";
 
 const ChartContainer = styled.div`
     width: 100vw;
@@ -20,7 +22,9 @@ export default class Charts extends PureComponent {
             <Body>
                 <ChartContainer>
                     <BarChartResult />
+                    <RadarChartResult />
                     <HeatMapResult />
+                    <SynchronizedAreaChartResult />
                 </ChartContainer>
             </Body>
         );

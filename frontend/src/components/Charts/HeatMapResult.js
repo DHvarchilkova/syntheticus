@@ -47,7 +47,7 @@ export default class HeatMapResult extends PureComponent {
                     id: 'lines',
                     type: 'patternLines',
                     background: 'inherit',
-                    color: 'rgba(0, 0, 0, 0.1)',
+                    color: 'rgba(99, 195, 255, 0.1)',
                     rotation: -45,
                     lineWidth: 4,
                     spacing: 7
