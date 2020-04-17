@@ -57,6 +57,7 @@ MIDDLEWARE = [
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
 
 ROOT_URLCONF = 'syntheticus.urls'
 
@@ -130,6 +131,8 @@ STATIC_URL = '/static-files/'
 MEDIA_URL = '/media-files/'
 MEDIA_ROOT = '/media-files'
 STATIC_ROOT = '/static-files'
+
+DATASCIENCE_URL = 'http://104.248.137.182:5001/'
 
 AUTH_USER_MODEL = 'users.User'
 
