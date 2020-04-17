@@ -85,6 +85,7 @@ const Register = (props) => {
     const [email, setEmail] = useState('');
     const history = useHistory();
     const userRegistrationHandler = async (e) => {
+        console.log('in userreghandler');
         e.preventDefault();
         const data = {
             emailverification: email

@@ -1,7 +1,9 @@
-import React, { Component } from 'react';
+import React, {Component, useState} from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 
 import Body from '../Body';
+import userLoginAction from "../../store/actions/loginActions";
 
 import logo from '../../assets/logo.png';
 import stock3 from '../../assets/stock3.jpg';
@@ -68,23 +70,33 @@ padding: 0px 0px 0px 30px;
 `;
 
 
-class LogIn extends Component {
-    render() {
+const Login = (props) => {
+
+    const [email, setEmail] = useState('synth@email.com');
+    const [password, setPassword] = useState('syntheticus');
+
+    const userLoginHandler = (e) => {
+        console.log('in loginhandler');
+        e.preventDefault();
+        const data = {
+            email,
+            password
+        };
+        props.dispatch(userLoginAction(data))
+    };
+
         return (
             <Body>
                 <ContentContainer>
                     <LogInBlock>
                         <Logo src={logo} />
                         <UserNameField>
-                            <LoginInput type="text" placeholder="Username*" />
+                            <LoginInput type="text" placeholder="synth@email.com" onChange={(e) => setEmail(e.currentTarget.value)}/>
                         </UserNameField>
                         <UserNameField>
-                            <LoginInput type="text" placeholder="Email*" />
+                            <LoginInput type="text" placeholder="syntheticus" onChange={(e) => setPassword(e.currentTarget.value)} />
                         </UserNameField>
-                        <UserNameField>
-                            <LoginInput type="text" placeholder="Password*" />
-                        </UserNameField>
-                        <LoginButton>login</LoginButton>
+                        <LoginButton type='submit' onClick={userLoginHandler}>login</LoginButton>
                         <ForgotPasswordSignUpText>Forgot Your Password? Click Here. | New User? <a href={"/register"} style={{ textDecoration: 'none' }}>Sign Up.</a>
                         </ForgotPasswordSignUpText>
                     </LogInBlock>
@@ -92,6 +104,6 @@ class LogIn extends Component {
             </Body>
         )
     }
-}
 
-export default LogIn;
+
+export default connect()(Login);

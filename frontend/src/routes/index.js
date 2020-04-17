@@ -10,6 +10,7 @@ import Body from "../components/Body";
 import Home2 from "../components/Home/index2";
 import Upload from "../components/Upload";
 import ChooseOptions from "../components/ChooseOptions";
+import Charts from "../components/Charts";
 
 
 const Routes = () => {
@@ -25,6 +26,7 @@ const Routes = () => {
                 <Route exact path = '/body' component={Body} />
                 <Route exact path = '/upload' component={Upload} />
                 <Route exact path = '/specify' component={ChooseOptions} />
+                <Route exact path = '/charts' component={Charts} />
             </Switch>
         </Router>
     )
