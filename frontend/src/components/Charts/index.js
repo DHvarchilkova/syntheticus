@@ -14,28 +14,13 @@ const ChartContainer = styled.div`
 `;
 
 const data = [
-  {
-    name: 'Page A', uv: 4000, pv: 2400, amt: 2400,
-  },
-  {
-    name: 'Page B', uv: 3000, pv: 1398, amt: 2210,
-  },
-  {
-    name: 'Page C', uv: 2000, pv: 9800, amt: 2290,
-  },
-  {
-    name: 'Page D', uv: 2780, pv: 3908, amt: 2000,
-  },
-  {
-    name: 'Page E', uv: 1890, pv: 4800, amt: 2181,
-  },
-  {
-    name: 'Page F', uv: 2390, pv: 3800, amt: 2500,
-  },
-  {
-    name: 'Page G', uv: 3490, pv: 4300, amt: 2100,
-  },
-];
+    {"name": " ?", "real": 5.025125628140704, "synthetic": 10.5},
+    {"name": " Federal-gov", "real": 5.527638190954774, "synthetic": 12.5},
+    {"name": " Local-gov", "real": 6.030150753768844, "synthetic": 12.5},
+    {"name": " Private", "real": 68.34170854271356, "synthetic": 15.0},
+    {"name": " Self-emp-inc", "real": 3.015075376884422, "synthetic": 19.5},
+    {"name": " Self-emp-not-inc", "real": 7.537688442211055, "synthetic": 17.0},
+    {"name": " State-gov", "real": 4.522613065326634, "synthetic": 13.0}];
 
 
 export default class Charts extends PureComponent {
@@ -58,8 +43,8 @@ export default class Charts extends PureComponent {
                             <YAxis />
                             <Tooltip />
                             <Legend />
-                            <Bar dataKey="pv" fill="#8884d8" />
-                            <Bar dataKey="uv" fill="#82ca9d" />
+                            <Bar dataKey="real" fill="#8884d8" />
+                            <Bar dataKey="synthetic" fill="#82ca9d" />
                         </BarChart>
                     </ResponsiveContainer>
                 </ChartContainer>

@@ -76,7 +76,9 @@ class MainHeader extends Component {
                     <Streamer />
                     <Header>
                         <LogoTaglineContainer>
-                            <Logo src={logo}/>
+                            <a href="https://syntheticus.propulsion-learn.ch">
+                                <Logo src={logo}/>
+                            </a>
                             <Tagline>
                                 <TaglineText>share data.</TaglineText>
                                 <TaglineText>without sharing data.</TaglineText>
