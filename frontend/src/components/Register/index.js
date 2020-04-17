@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import {useHistory} from 'react-router-dom';
 
 import Body from '../Body';
-import {registrationAction} from '../../store/actions/registrationActions';
+import { registrationAction } from "../../store/actions/registrationActions";
 
 import logo from '../../assets/logo.png';
 import stock3 from '../../assets/stock3.jpg';
@@ -80,19 +80,17 @@ padding: 0px 0px 0px 30px;
 `;
 
 
-const Register = (props) => {
+const Register = ({ error, registrationAction, history, match }) => {
 
-    const [email, setEmail] = useState('');
-    const history = useHistory();
-    const userRegistrationHandler = async (e) => {
-        console.log('in userreghandler');
+    let [email, setEmail] = useState('');
+
+    const handleInputChange = e => setEmail(e.target.value);
+
+    const handleSubmit = async (e) => {
+        console.log('in handleSubmit');
         e.preventDefault();
-        const data = {
-            emailverification: email
-        };
-
-        const emailverified = await props.dispatch(registrationAction(data));
-        if (emailverified){
+        const response = await registrationAction(email);
+        if (response.status < 400) {
             history.push("/register/complete");
         }
     };
@@ -104,9 +102,9 @@ const Register = (props) => {
                         <Logo src={logo} />
                         <RegisterText>Please enter your email address. We will send you a verification code to complete your registration.</RegisterText>
                         <UserNameField>
-                            <LoginInput type="text" required='true' placeholder="Email*" onChange={(e) => setEmail(e.currentTarget.value)}/>
+                            <LoginInput type="text" required='true' placeholder="Email*" value={email} onChange={ handleInputChange } />
                         </UserNameField>
-                        <LoginButton type='submit' onClick={userRegistrationHandler}>register</LoginButton>
+                        <LoginButton type='submit' onClick={ handleSubmit }>register</LoginButton>
                         <ForgotPasswordSignUpText>We don't share your data.</ForgotPasswordSignUpText>
                     </RegisterBlock>
                 </ContentContainer>
