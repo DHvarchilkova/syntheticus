@@ -22,15 +22,15 @@ class DatasetUploadView(APIView):
             dataset_serializer.save()
 
             # call to data science BE
-            ds_full_url = settings.DATASCIENCE_URL + "put_dataset/" + user.username + "/" + request.data[
-                                                                                                'dataset'].name[
-                                                                                                    0:-7]
+            ds_full_url = settings.DATASCIENCE_URL + "put_dataset/" + user.username
+            ds_full_url += "/" + request.data['dataset'].name[0:-7]
             # send request
             r = requests.put(url=ds_full_url, files={"dataset": request.data['dataset']})
             # check response for errors
-            #       if r.status_code >= 200 and r.status_code < 300:
-            #          pass
-            return Response(dataset_serializer.data, status=status.HTTP_201_CREATED)
+            if 200 <= r.status_code < 300:
+                return Response(dataset_serializer.data, status=status.HTTP_201_CREATED)
+            else:
+                return Response(dataset_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         else:
             return Response(dataset_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
