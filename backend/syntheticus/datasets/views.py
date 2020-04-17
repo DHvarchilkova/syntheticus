@@ -1,11 +1,13 @@
+from django.contrib.auth import get_user_model
 from rest_framework.parsers import FileUploadParser
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
 from .serializers import DatasetSerializer
-from .models import Dataset
 from django.conf import settings
 import requests
+
+User = get_user_model()
 
 
 class DatasetUploadView(APIView):
@@ -14,13 +16,15 @@ class DatasetUploadView(APIView):
 
     def post(self, request, *args, **kwargs):
         dataset_serializer = DatasetSerializer(data=request.data)
+        user_id = request.POST.get('user', '')
+        user = User.objects.get(id=user_id)
         if dataset_serializer.is_valid():
             dataset_serializer.save()
 
             # call to data science BE
-            ds_full_url = settings.DATASCIENCE_URL + "put_dataset/" + \
-                          str(request.user.id) + \
-                          "/" + request.data['dataset'].name[0:-7]
+            ds_full_url = settings.DATASCIENCE_URL + "put_dataset/" + user.username + "/" + request.data[
+                                                                                                'dataset'].name[
+                                                                                                    0:-7]
             # send request
             r = requests.put(url=ds_full_url, files={"dataset": request.data['dataset']})
             # check response for errors
