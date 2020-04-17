@@ -13,6 +13,7 @@ const ChartContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow; auto;
 `;
 
 export default class Charts extends PureComponent {

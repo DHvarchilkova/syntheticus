@@ -12,6 +12,7 @@ import Upload from "../components/Upload";
 import ChooseOptions from "../components/ChooseOptions";
 import Charts from "../components/Charts";
 import TestChart from "../components/Charts/BarChartResult";
+import AllCharts from "../components/Charts/AllCharts";
 
 
 const Routes = () => {
@@ -29,6 +30,7 @@ const Routes = () => {
                 <Route exact path = '/specify' component={ChooseOptions} />
                 <Route exact path = '/charts' component={Charts} />
                 <Route exact path = '/testchart' component={TestChart} />
+                <Route exact path = '/allcharts' component={AllCharts} />
             </Switch>
         </Router>
     )
