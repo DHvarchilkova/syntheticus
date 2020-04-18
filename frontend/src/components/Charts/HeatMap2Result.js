@@ -11,7 +11,7 @@ const data = [
     {"name": " Self-emp-not-inc", "real": 7.537688442211055, "synthetic": 17.0},
     {"name": " State-gov", "real": 4.522613065326634, "synthetic": 13.0}];
 
-export default class HeatMapResult extends PureComponent {
+export default class HeatMap2Result extends PureComponent {
     render() {
         return (
             <ResponsiveHeatMap
@@ -25,7 +25,7 @@ export default class HeatMapResult extends PureComponent {
                     'Self-emp-not-inc',
                     'State-gov'
                 ]}
-                indexBy="real"
+                indexBy="synthetic"
                 margin={{ top: 100, right: 60, bottom: 60, left: 60 }}
             forceSquare={true}
             axisTop={{ orient: 'top', tickSize: 5, tickPadding: 5, tickRotation: -90, legend: '', legendOffset: -6 }}
