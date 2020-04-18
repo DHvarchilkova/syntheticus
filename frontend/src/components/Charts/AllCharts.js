@@ -5,6 +5,7 @@ import MainHeader from '../MainHeader';
 import Footer from '../Footer';
 import BarChartResult from "./BarChartResult";
 import HeatMapResult from "./HeatMapResult";
+import HeatMap2Result from "./HeatMap2Result";
 import RadarChartResult from "./RadarChartResult";
 import SynchronizedAreaChartResult from "./SynchronizedAreaChartResult";
 
@@ -25,6 +26,7 @@ const FirstContainer = styled.div`
     background-image: url(${stock3});
     background-size: cover;
     background-repeat: no-repeat;
+    margin-top: 80px;
 `;
 
 const GraphContainer = styled.div`
@@ -33,15 +35,20 @@ const GraphContainer = styled.div`
     display: flex;
     justify-content: space-around;
     align-items: center;
-    padding-left: 126px;
-    background-color: rgba(242, 242, 242, 1.0);
-    margin-top: 5%;
+    padding-left: 120px;
+    background-color: rgba(242, 242, 242, 0.9);
 `;
 
-const TextContainer = styled.div`
-    width: 20%;
+const GraphBox = styled.div`
+    width: 60%;
+    height: 80%;
+    display: flex;
+    justify-content: space-between;
+`;
+
+const TextBox = styled.div`
+    width: 30%;
     height: 50%;
-    margin-top: 10%;
 `;
 
 const TextByChart = styled.p`
@@ -90,47 +97,56 @@ class AllCharts extends Component {
                 <ContentWrapper>
                     <FirstContainer>
                         <GraphContainer>
-                            <SynchronizedAreaChartResult />
-                            <TextContainer>
+                            <GraphBox>
+                                <SynchronizedAreaChartResult />
+                            </GraphBox>
+                            <TextBox>
                                 <TextByChart>Big data, data mining and artificial intelligence are revolutionizing the ways
                                 we obtain value from data. Syntheticus uses state-of-the-art deep learning —
                                 allowing users to unlock the power of synthetic data.
                                 </TextByChart>
-                            </TextContainer>
+                            </TextBox>
                         </GraphContainer>
                     </FirstContainer>
                     <SecondContainer>
                         <GraphContainer>
-                            <BarChartResult />
-                            <TextContainer>
+                            <GraphBox>
+                                <BarChartResult />
+                            </GraphBox>
+                            <TextBox>
                                 <TextByChart>Big data, data mining and artificial intelligence are revolutionizing the ways
                                 we obtain value from data. Syntheticus uses state-of-the-art deep learning —
                                 allowing users to unlock the power of synthetic data.
                                 </TextByChart>
-                            </TextContainer>
+                            </TextBox>
                         </GraphContainer>
                     </SecondContainer>
                     <ThirdContainer>
                         <GraphContainer>
-                            <HeatMapResult />
-                            <TextContainer>
+                            <GraphBox>
+                                <HeatMapResult />
+                                <HeatMap2Result />
+                            </GraphBox>
+                            <TextBox>
                                 <TextByChart>Big data, data mining and artificial intelligence are revolutionizing the ways
                                 we obtain value from data. Syntheticus uses state-of-the-art deep learning —
                                 allowing users to unlock the power of synthetic data.
                                 </TextByChart>
-                            </TextContainer>
+                            </TextBox>
                         </GraphContainer>
                     </ThirdContainer>
                     <ForthContainer>
                         <GraphContainer>
-                            <RadarChartResult />
-                            <TextContainer>
+                            <GraphBox>
+                                <RadarChartResult />
+                            </GraphBox>
+                            <TextBox>
                                 <TextByChart>
                                     Big data, data mining and artificial intelligence are revolutionizing the ways
                                 we obtain value from data. Syntheticus uses state-of-the-art deep learning —
                                 allowing users to unlock the power of synthetic data.
                                 </TextByChart>
-                            </TextContainer>
+                            </TextBox>
                         </GraphContainer>
                     </ForthContainer>
                 </ContentWrapper>

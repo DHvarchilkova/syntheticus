@@ -35,7 +35,7 @@ export default class BarChartResult extends PureComponent {
 */
     render() {
         return (
-            <ResponsiveContainer width='76%' height={400}>
+            <ResponsiveContainer width='99%' height={400} >
                 <BarChart
                     width={500}
                     height={300}
@@ -44,9 +44,9 @@ export default class BarChartResult extends PureComponent {
                         }}
                         >
                         <CartesianGrid strokeDasharray="3 3" />
-                        <XAxis dataKey="name" label={{ value: "Workplace", position: "insideBottomLeft", dy: 20}} />
+                        <XAxis dataKey="name" label={{ value: "workplace", position: "insideBottomLeft", dy: 20}} />
                         <YAxis unit="%">
-                            <Label value="percentage" position="insideTopLeft" offset={10} />
+                            <Label value="" position="insideTopLeft" offset={10} />
                         </YAxis>
                         <Tooltip />
                         <Legend />
