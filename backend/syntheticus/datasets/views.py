@@ -6,17 +6,6 @@ from rest_framework import status
 from .serializers import DatasetSerializer
 from django.conf import settings
 import requests
-import logging
-import http.client as http_client
-
-# http_client.HTTPConnection.debuglevel = 1
-
-# You must initialize logging, otherwise you'll not see debug output.
-# logging.basicConfig()
-# logging.getLogger().setLevel(logging.DEBUG)
-# requests_log = logging.getLogger("requests.packages.urllib3")
-# requests_log.setLevel(logging.DEBUG)
-# requests_log.propagate = True
 
 User = get_user_model()
 
@@ -36,14 +25,9 @@ class DatasetUploadView(APIView):
             ds_full_url = settings.DATASCIENCE_URL + "put_dataset/" + user.username
             ds_full_url += "/" + request.data['dataset'].name[0:-7]
             # send request
-            payload = {}
-            # files = [
-            #     ('dataset', request.FILES.get('dataset').file)
-            # ]
             files = [
                 ('dataset', open('/media-files/'+request.data['dataset'].name, 'rb'))
             ]
-            headers = {}
             r = requests.put(url=ds_full_url, files=files)
             # check response for errors
             if 200 <= r.status_code < 300:
@@ -58,7 +42,6 @@ class ListDatasetsView(APIView):
     permission_classes = []
 
     def get(self, request, *args, **kwargs):
-        # call to data science BE
         ds_full_url = settings.DATASCIENCE_URL + "list_datasets/" + kwargs.get('user_username')
         r = requests.get(url=ds_full_url)
         if r.status_code != 200:
