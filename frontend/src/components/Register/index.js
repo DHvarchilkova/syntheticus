@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
+import { useHistory } from "react-router-dom"
+
+
 
 import Body from '../Body';
-import { registrationAction } from "../../store/actions/registrationActions";
+import { registrationAction } from '../../store/actions/registrationActions';
 
 import logo from '../../assets/logo.png';
 import stock3 from '../../assets/stock3.jpg';
@@ -79,31 +82,32 @@ padding: 0px 0px 0px 30px;
 `;
 
 
-const Register = ({ error, registrationAction, history, match }) => {
-
-    let [email, setEmail] = useState('');
-
-    const handleInputChange = e => setEmail(e.target.value);
-
-    const handleSubmit = async (e) => {
-        console.log('in handleSubmit');
+const Register = (props) => {
+     const [email, setEmail] = useState('');
+     const history = useHistory();
+     const userRegistrationHandler = async (e) => {
         e.preventDefault();
-        const response = await registrationAction(email);
-        if (response.status < 400) {
+        const data = {
+            email: email
+        };
+
+        const emailverified = await props.dispatch(registrationAction(data));
+        if (emailverified){
             history.push("/register/complete");
         }
+
     };
 
-        return(
+        return (
             <Body>
                 <ContentContainer>
                     <RegisterBlock>
                         <Logo src={logo} />
-                        <RegisterText>Please enter your email address. We will send you a verification code to complete your registration.</RegisterText>
+                        <RegisterText>Please enter your email address. We will send you a validation code to complete your registration.</RegisterText>
                         <UserNameField>
-                            <LoginInput type="text" required='true' placeholder="Email*" value={email} onChange={ handleInputChange } />
+                            <LoginInput placeholder="Email*" value={email} onChange={(e) => setEmail(e.currentTarget.value)} />
                         </UserNameField>
-                        <LoginButton type='submit' onClick={ handleSubmit }>register</LoginButton>
+                        <LoginButton type='submit' onClick={ userRegistrationHandler }>register</LoginButton>
                         <ForgotPasswordSignUpText>We don't share your data.</ForgotPasswordSignUpText>
                     </RegisterBlock>
                 </ContentContainer>

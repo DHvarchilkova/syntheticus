@@ -1,12 +1,14 @@
 import React, {Component, useState} from 'react';
 import { connect } from 'react-redux';
+import { useHistory } from "react-router-dom"
+
 import styled from 'styled-components';
 
 import Body from '../Body';
-import userLoginAction from "../../store/actions/loginActions";
 
 import logo from '../../assets/logo.png';
 import stock3 from '../../assets/stock3.jpg';
+import { userLoginAction } from "../../store/actions/loginActions";
 
 
 const ContentContainer = styled.div`
@@ -71,39 +73,46 @@ padding: 0px 0px 0px 30px;
 
 
 const Login = (props) => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const history = useHistory();
 
-    const [email, setEmail] = useState('synth@email.com');
-    const [password, setPassword] = useState('syntheticus');
-
-    const userLoginHandler = (e) => {
+    const userLoginHandler = async (e) => {
         console.log('in loginhandler');
         e.preventDefault();
         const data = {
-            email,
-            password
+            email: email,
+            password: password
         };
-        props.dispatch(userLoginAction(data))
+        const userloggedin = await props.dispatch(userLoginAction(data));
+        if (userloggedin){
+            history.push("/datasets/upload");
+        }
     };
-
         return (
             <Body>
                 <ContentContainer>
                     <LogInBlock>
-                        <Logo src={logo} />
+                        <Logo src={logo}/>
                         <UserNameField>
-                            <LoginInput type="text" placeholder="synth@email.com" onChange={(e) => setEmail(e.currentTarget.value)}/>
+                            <LoginInput type="text" placeholder="email"
+                                        onChange={(e) => setEmail(e.currentTarget.value)}/>
                         </UserNameField>
                         <UserNameField>
-                            <LoginInput type="text" placeholder="syntheticus" onChange={(e) => setPassword(e.currentTarget.value)} />
+                            <LoginInput type="text" placeholder="password"
+                                        onChange={(e) => setPassword(e.currentTarget.value)}/>
                         </UserNameField>
                         <LoginButton type='submit' onClick={userLoginHandler}>login</LoginButton>
-                        <ForgotPasswordSignUpText>Forgot Your Password? Click Here. | New User? <a href={"/register"} style={{ textDecoration: 'none' }}>Sign Up.</a>
+                        <ForgotPasswordSignUpText>Forgot Your Password? Click Here. | New User? <a href={"/register"}
+                                                                                                   style={{textDecoration: 'none'}}>Sign
+                            Up.</a>
                         </ForgotPasswordSignUpText>
                     </LogInBlock>
                 </ContentContainer>
             </Body>
         )
     }
+
 
 
 export default connect()(Login);
