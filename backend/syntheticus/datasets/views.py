@@ -6,6 +6,17 @@ from rest_framework import status
 from .serializers import DatasetSerializer
 from django.conf import settings
 import requests
+import logging
+import http.client as http_client
+
+# http_client.HTTPConnection.debuglevel = 1
+
+# You must initialize logging, otherwise you'll not see debug output.
+# logging.basicConfig()
+# logging.getLogger().setLevel(logging.DEBUG)
+# requests_log = logging.getLogger("requests.packages.urllib3")
+# requests_log.setLevel(logging.DEBUG)
+# requests_log.propagate = True
 
 User = get_user_model()
 
@@ -14,7 +25,7 @@ class DatasetUploadView(APIView):
     parser_class = (FileUploadParser,)
     permission_classes = []
 
-    def post(self, request, *args, **kwargs):
+    def put(self, request, *args, **kwargs):
         dataset_serializer = DatasetSerializer(data=request.data)
         user_id = request.POST.get('user', '')
         user = User.objects.get(id=user_id)
@@ -25,7 +36,15 @@ class DatasetUploadView(APIView):
             ds_full_url = settings.DATASCIENCE_URL + "put_dataset/" + user.username
             ds_full_url += "/" + request.data['dataset'].name[0:-7]
             # send request
-            r = requests.put(url=ds_full_url, files={"dataset": request.data['dataset']})
+            payload = {}
+            # files = [
+            #     ('dataset', request.FILES.get('dataset').file)
+            # ]
+            files = [
+                ('dataset', open('/media-files/'+request.data['dataset'].name, 'rb'))
+            ]
+            headers = {}
+            r = requests.put(url=ds_full_url, files=files)
             # check response for errors
             if 200 <= r.status_code < 300:
                 return Response(dataset_serializer.data, status=status.HTTP_201_CREATED)
@@ -41,6 +60,20 @@ class ListDatasetsView(APIView):
     def get(self, request, *args, **kwargs):
         # call to data science BE
         ds_full_url = settings.DATASCIENCE_URL + "list_datasets/" + kwargs.get('user_username')
+        r = requests.get(url=ds_full_url)
+        if r.status_code != 200:
+            return Response(status=status.HTTP_418_IM_A_TEAPOT)
+        return Response(data=r.text, status=status.HTTP_200_OK, content_type="application/json")
+
+
+class ListReportView(APIView):
+    permission_classes = []
+
+    def get(self, request, *args, **kwargs):
+        user = User.objects.get(id=kwargs.get('user_id'))
+        # call to data science BE
+        ds_full_url = settings.DATASCIENCE_URL + "get_report/" + user.username
+        ds_full_url += "/" + kwargs.get('dataset_name') + "/" + kwargs.get('synthetic_dataset_name')
         r = requests.get(url=ds_full_url)
         if r.status_code != 200:
             return Response(status=status.HTTP_418_IM_A_TEAPOT)
