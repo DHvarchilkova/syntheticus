@@ -8,6 +8,7 @@ const HeaderWrapper = styled.div`
     min-width: 100%;
     height: 13vh;
     position: fixed;
+    z-index: 5;
 `;
 
 const Streamer = styled.div`
@@ -87,7 +88,7 @@ class MainHeader extends Component {
                         <NavMenu>
                             <NavMenuText><a href={"/"} style={{ textDecoration: 'none' }}>Home</a></NavMenuText>
                             <NavMenuText><a href={"/"} style={{ textDecoration: 'none' }}>Solution</a></NavMenuText>
-                            <NavMenuText><a href={"/upload"} style={{ textDecoration: 'none' }}>Upload Data</a></NavMenuText>
+                            <NavMenuText><a href={"/datasets/upload"} style={{ textDecoration: 'none' }}>Upload Data</a></NavMenuText>
                             <NavMenuText><a href={"/about"} style={{ textDecoration: 'none' }}>About Us</a></NavMenuText>
                             <NavMenuText><a href={"/login"} style={{ textDecoration: 'none' }}>Login</a></NavMenuText>
                         </NavMenu>
