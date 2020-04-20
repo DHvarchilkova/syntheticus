@@ -26,7 +26,7 @@ class DatasetUploadView(APIView):
             ds_full_url += "/" + request.data['dataset'].name[0:-7]
             # send request
             files = [
-                ('dataset', open('/media-files/'+request.data['dataset'].name, 'rb'))
+                ('dataset', open('/media-files/' + request.data['dataset'].name, 'rb'))
             ]
             r = requests.put(url=ds_full_url, files=files)
             # check response for errors
