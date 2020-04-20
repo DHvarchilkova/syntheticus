@@ -14,8 +14,8 @@ export const userLoginError = error => {
   };
 };
 
-const userLoginAction = ({ username, password }) => (dispatch, getState) => {
-  return axios.post('https://syntheticus.propulsion-learn.ch/backend/api/auth/token/', { username, password})
+export const userLoginAction = ({ email, password }) => (dispatch, getState) => {
+  return axios.post('https://syntheticus.propulsion-learn.ch/backend/api/auth/token', { email, password})
   .then( response => {
       dispatch(userLoginDispatch(response.data.access))
       localStorage.setItem('token', response.data.access)
@@ -25,7 +25,7 @@ const userLoginAction = ({ username, password }) => (dispatch, getState) => {
   })
 }
 
-export default userLoginAction;
+
 
 
 

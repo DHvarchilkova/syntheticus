@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { useState} from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 
 import MainHeader from '../MainHeader';
@@ -6,6 +7,8 @@ import MainHeader from '../MainHeader';
 import logo from '../../assets/logo.png';
 import stock3 from '../../assets/stock3.jpg';
 import Footer from "../Footer";
+import { useHistory } from "react-router-dom";
+import { ValidationAction } from "../../store/actions/registrationValidationActions";
 
 
 const ContentWrapper = styled.div`
@@ -74,8 +77,26 @@ padding: 0px 0px 0px 30px;
 `;
 
 
-class EmailValidation extends Component {
-    render() {
+const EmailValidation = (props) => {
+     const [email, setEmail] = useState('');
+     const [username, setUsername] = useState('');
+     const [validation_code, setValidationCode] = useState('');
+     const [password, setPassword] = useState('');
+     const history = useHistory();
+     const userCompleteRegistrationHandler = async (e) => {
+        e.preventDefault();
+        const data = {
+            email: email,
+            username: username,
+            validation_code: validation_code,
+            password: password
+        };
+
+        const userregistrationcompleted = await props.dispatch(ValidationAction(data));
+        if (userregistrationcompleted) history.push('/login');
+
+     };
+
         return (
             <div>
                 <MainHeader />
@@ -85,18 +106,18 @@ class EmailValidation extends Component {
                         <Logo src={logo} />
                         <RegisterText>Thank you. Please fill out these fields to complete your registration.</RegisterText>
                         <UserNameField>
-                            <LoginInput type="text" placeholder="Your Verification Code*" />
+                            <LoginInput type="text" placeholder="Your Validation Code*" value={validation_code} onChange={(e) => setValidationCode(e.currentTarget.value)}/>
                         </UserNameField>
                          <UserNameField>
-                            <LoginInput type="text" placeholder="Create Username*" />
+                            <LoginInput type="text" placeholder="Username*" value={username} onChange={(e) => setUsername(e.currentTarget.value)} />
                         </UserNameField>
                         <UserNameField>
-                            <LoginInput type="text" required='true' placeholder="Email*" />
+                            <LoginInput type="text" required={true} placeholder="Email*" value={email} onChange={(e) => setEmail(e.currentTarget.value)}/>
                         </UserNameField>
                         <UserNameField>
-                            <LoginInput type="password" required='true' placeholder="Password*" />
+                            <LoginInput type="password" required={true} placeholder="Password*" value={password} onChange={(e) => setPassword(e.currentTarget.value)} />
                         </UserNameField>
-                        <LoginButton>complete registration</LoginButton>
+                        <LoginButton type='submit' onClick={ userCompleteRegistrationHandler }>complete registration</LoginButton>
                     </LogInBlock>
                 </ContentContainer>
                     <Footer />
@@ -104,6 +125,6 @@ class EmailValidation extends Component {
             </div>
         )
     }
-}
 
-export default EmailValidation;
+
+export default connect()(EmailValidation);

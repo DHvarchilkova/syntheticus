@@ -15,7 +15,7 @@ export const errorValidationDispatch = (error) => {
 }
 
 export const ValidationAction = validationSentData => (dispatch, getState) => {
-    return axios.post('https://syntheticus.propulsion-learn.ch/backend/api/auth/validate/', validationSentData)
+    return axios.post('https://syntheticus.propulsion-learn.ch/backend/api/auth/validate', validationSentData)
         .then(response => {
             dispatch(validationDispatch(response.data))
             return response;
