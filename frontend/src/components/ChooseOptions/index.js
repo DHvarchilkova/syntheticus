@@ -128,6 +128,7 @@ class ChooseOptions extends Component {
                                         <RowsInput type="text" placeholder="The dataset you uploaded has 500 rows." />
                                     </ChooseRows>
                                 </ChooseModelRows>
+                                <WhiteButton style={{marginBottom: "5%"}}>Start Syntheticus</WhiteButton>
                             </DragDropField>
                     </UploadBlock>
                 </FirstContainer>

@@ -36,7 +36,7 @@ const GraphContainer = styled.div`
     justify-content: space-around;
     align-items: center;
     padding-left: 120px;
-    background-color: rgba(242, 242, 242, 0.9);
+    background-color: rgba(242, 242, 242, 0.8);
 `;
 
 const GraphBox = styled.div`

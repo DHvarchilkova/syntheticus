@@ -29,12 +29,15 @@ export const MenuButton = styled.button`
 export const WhiteButton = styled.button`
     width: 10vw;
     height: 5vh;
-    padding: 10px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
     border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
     border-style: none;
     border: 2px solid #63c3ff;
     text-transform: uppercase;
+    text-align: center;
     background-color: #ffffff;
 `;

@@ -6,7 +6,7 @@ const data = [
     {"name": " ?", "real": 5.025125628140704, "synthetic": 10.5},
     {"name": " Federal-gov", "real": 5.527638190954774, "synthetic": 12.5},
     {"name": " Local-gov", "real": 6.030150753768844, "synthetic": 12.5},
-    {"name": " Private", "real": 68.34170854271356, "synthetic": 15.0},
+    {"name": " Private", "real": 8.34170854271356, "synthetic": 15.0},
     {"name": " Self-emp-inc", "real": 3.015075376884422, "synthetic": 19.5},
     {"name": " Self-emp-not-inc", "real": 7.537688442211055, "synthetic": 17.0},
     {"name": " State-gov", "real": 4.522613065326634, "synthetic": 13.0}];
@@ -48,7 +48,7 @@ export default class HeatMap2Result extends PureComponent {
                     id: 'lines',
                     type: 'patternLines',
                     background: 'inherit',
-                    color: 'rgba(99, 195, 255, 0.1)',
+                    color: 'rgba(99, 195, 255, 0.8)',
                     rotation: -45,
                     lineWidth: 4,
                     spacing: 7
