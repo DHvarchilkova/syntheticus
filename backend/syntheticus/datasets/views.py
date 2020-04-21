@@ -12,11 +12,12 @@ User = get_user_model()
 
 class DatasetUploadView(APIView):
     parser_class = (FileUploadParser,)
-    permission_classes = []
 
     def post(self, request, *args, **kwargs):
-        dataset_serializer = DatasetSerializer(data=request.data)
-        user_id = request.POST.get('user', '')
+        data = request.data
+        data['user'] = request.user.id
+        dataset_serializer = DatasetSerializer(data=data)
+        user_id = request.user.id
         user = User.objects.get(id=user_id)
         if dataset_serializer.is_valid():
             dataset_serializer.save()
@@ -25,9 +26,9 @@ class DatasetUploadView(APIView):
             ds_full_url = settings.DATASCIENCE_URL + "put_dataset/" + user.username
             ds_full_url += "/" + request.data['dataset'].name[0:-7]
             # send request
-            files = [
-                ('dataset', open('/media-files/' + request.data['dataset'].name, 'rb'))
-            ]
+            files = {
+                'dataset': open('/media-files/' + request.data['dataset'].name, 'rb')
+            }
             r = requests.put(url=ds_full_url, files=files)
             # check response for errors
             if 200 <= r.status_code < 300:
@@ -39,10 +40,9 @@ class DatasetUploadView(APIView):
 
 
 class ListDatasetsView(APIView):
-    permission_classes = []
 
     def get(self, request, *args, **kwargs):
-        ds_full_url = settings.DATASCIENCE_URL + "list_datasets/" + kwargs.get('user_username')
+        ds_full_url = settings.DATASCIENCE_URL + "list_datasets/" + request.user.username
         r = requests.get(url=ds_full_url)
         if r.status_code != 200:
             return Response(status=status.HTTP_418_IM_A_TEAPOT)
@@ -50,7 +50,6 @@ class ListDatasetsView(APIView):
 
 
 class ListReportView(APIView):
-    permission_classes = []
 
     def get(self, request, *args, **kwargs):
         user = User.objects.get(id=kwargs.get('user_id'))

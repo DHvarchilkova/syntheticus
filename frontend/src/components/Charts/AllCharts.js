@@ -124,8 +124,7 @@ class AllCharts extends Component {
                     <ThirdContainer>
                         <GraphContainer>
                             <GraphBox>
-                                <HeatMapResult />
-                                <HeatMap2Result />
+                                <RadarChartResult />
                             </GraphBox>
                             <TextBox>
                                 <TextByChart>Big data, data mining and artificial intelligence are revolutionizing the ways
@@ -138,7 +137,8 @@ class AllCharts extends Component {
                     <ForthContainer>
                         <GraphContainer>
                             <GraphBox>
-                                <RadarChartResult />
+                                <HeatMapResult />
+                                <HeatMap2Result />
                             </GraphBox>
                             <TextBox>
                                 <TextByChart>
