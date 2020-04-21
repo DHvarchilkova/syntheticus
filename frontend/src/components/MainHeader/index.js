@@ -87,7 +87,6 @@ class MainHeader extends Component {
                         </LogoTaglineContainer>
                         <NavMenu>
                             <NavMenuText><a href={"/"} style={{ textDecoration: 'none' }}>Home</a></NavMenuText>
-                            <NavMenuText><a href={"/"} style={{ textDecoration: 'none' }}>Solution</a></NavMenuText>
                             <NavMenuText><a href={"/datasets/upload"} style={{ textDecoration: 'none' }}>Upload Data</a></NavMenuText>
                             <NavMenuText><a href={"/about"} style={{ textDecoration: 'none' }}>About Us</a></NavMenuText>
                             <NavMenuText><a href={"/login"} style={{ textDecoration: 'none' }}>Login</a></NavMenuText>

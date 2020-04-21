@@ -17,13 +17,13 @@ const customizedTick = (props) => {
 };
 
 const data = [
-    {"name": " ?", "real": 5.025125628140704, "synthetic": 10.5, fullMark: 100},
-    {"name": " Federal-gov", "real": 5.527638190954774, "synthetic": 12.5, fullMark: 100},
-    {"name": " Local-gov", "real": 6.030150753768844, "synthetic": 12.5, fullMark: 100},
-    {"name": " Private", "real": 8.34170854271356, "synthetic": 15.0, fullMark: 100},
-    {"name": " Self-emp-inc", "real": 3.015075376884422, "synthetic": 19.5, fullMark: 100},
-    {"name": " Self-emp-not-inc", "real": 7.537688442211055, "synthetic": 17.0, fullMark: 100},
-    {"name": " State-gov", "real": 4.522613065326634, "synthetic": 13.0, fullMark: 100}];
+    {"name": " Other", "real": 12.025125628140704, "synthetic": 10.5, fullMark: 100},
+    {"name": " Federal-gov", "real": 11.527638190954774, "synthetic": 12.5, fullMark: 100},
+    {"name": " Local-gov", "real": 10.030150753768844, "synthetic": 12.5, fullMark: 100},
+    {"name": " Private", "real": 13.34170854271356, "synthetic": 15.0, fullMark: 100},
+    {"name": " Self-emp-inc", "real": 17.015075376884422, "synthetic": 19.5, fullMark: 100},
+    {"name": " Self-emp-not-inc", "real": 17.537688442211055, "synthetic": 17.0, fullMark: 100},
+    {"name": " State-gov", "real": 14.522613065326634, "synthetic": 13.0, fullMark: 100}];
 
 export default class RadarChartResult extends PureComponent {
     render() {
@@ -33,7 +33,7 @@ export default class RadarChartResult extends PureComponent {
                     <PolarGrid stroke={'#000000'}/>
                     <PolarAngleAxis dataKey="name" tick={customizedTick}/>
                     <PolarRadiusAxis />
-                    <Radar name="real" dataKey="real" stroke="#8884d8" fill="#8884d8" fillOpacity={0.9} />
+                    <Radar name="real" dataKey="real" stroke="#8884d8" fill="#8884d8" fillOpacity={0.7} />
                     <Radar name="synthetic" dataKey="synthetic" stroke="#82ca9d" fill="#82ca9d" fillOpacity={0.4} />
                     <Legend />
                 </RadarChart>
