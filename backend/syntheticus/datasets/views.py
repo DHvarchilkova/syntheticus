@@ -26,9 +26,6 @@ class DatasetUploadView(APIView):
             ds_full_url = settings.DATASCIENCE_URL + "put_dataset/" + user.username
             ds_full_url += "/" + request.data['dataset'].name[0:-7]
             # send request
-            #files = [
-            #    ('dataset', open('/media-files/' + request.data['dataset'].name, 'rb'))
-            #]
             files = {
                 'dataset': open('/media-files/' + request.data['dataset'].name, 'rb')
             }
