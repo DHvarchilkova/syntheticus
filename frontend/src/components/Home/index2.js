@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import { Link } from "react-router-dom";
 
 import MainHeader from '../MainHeader';
 import Footer from '../Footer';
 import { BlueButton } from '../../styles/GlobalButtons';
 
-import chart from '../../assets/chart1.png';
+import RadarChartResult from "../Charts/RadarChartResult";
 import stock4 from '../../assets/stock4.jpg';
 import stock3 from '../../assets/stock3.jpg';
 
@@ -50,11 +51,17 @@ const MissionText2 = styled.p`
 const SecondContainer = styled.div`
     width: 100%;
     height: 84vh;
+
+`;
+
+const ContentBox = styled.div`
+    width: 100%;
+    height: 70vh;
     display: flex;
     justify-content: space-around;
 `;
 
-const ExampleGraph = styled.img`
+const ExampleGraphBox = styled.div`
     width: 50%;
     height: 53vh;
     margin-top: 14vh;
@@ -67,7 +74,7 @@ const ExampleRightHalf = styled.div`
 const ExampleText = styled.p`
     line-height: 1.5em;
     font-size: 24px;
-    margin-top: 25vh;
+    margin-top: 20vh;
     background: -webkit-linear-gradient(#63c3ff, #8088fd);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -78,16 +85,76 @@ const ButtonContainer = styled.div`
     margin-right: 20%;
 `;
 
+const BottomBar = styled.div`
+    width: 100%;
+    height: 10vh;
+    margin-top: 40px;
+    box-shadow: 0 0 15px 10px #8088fd;
+    background: linear-gradient(270deg, #63c3ff, #8088fd, #82ca9d);
+    background-size: 400% 400%;
+    -webkit-animation: AnimationName 6s ease infinite;
+    -moz-animation: AnimationName 6s ease infinite;
+    animation: AnimationName 6s ease infinite;
+    
+    @-webkit-keyframes AnimationName {
+        0%{background-position:0% 50%}
+        50%{background-position:100% 50%}
+        100%{background-position:0% 50%}
+    }
+    @-moz-keyframes AnimationName {
+        0%{background-position:0% 50%}
+        50%{background-position:100% 50%}
+        100%{background-position:0% 50%}
+    }
+    @keyframes AnimationName {
+        0%{background-position:0% 50%}
+        50%{background-position:100% 50%}
+        100%{background-position:0% 50%}
+    }
+`;
+
 const ThirdContainer = styled.div`
     width: 100%;
     height: 84vh;
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
     background-image: url(${stock3});
     background-size: cover;
     background-repeat: no-repeat;
 `;
 
+const ContentBlock1 = styled.div`
+    width: 100%;
+    height: 20vh;
+    margin-top: 11vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(242, 242, 242, 0.9);
+`;
+
+const ContentBlock2 = styled.div`
+    width: 100%;
+    height: 20vh;
+    margin-bottom: 11vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(242, 242, 242, 0.9);
+`;
+
+const Mapbox = styled.img`
+    width: 75%;
+    height: 35%;
+    margin-top: 7%;
+`;
+
+const Text = styled.p`
+    width: 75%;
+    margin-top: 10px;
+    font-size: 24px;
+`;
 
 class Home2 extends Component {
     render() {
@@ -106,15 +173,28 @@ class Home2 extends Component {
                         </MissionText>
                     </FirstContainer>
                     <SecondContainer>
-                        <ExampleGraph src={chart} />
-                        <ExampleRightHalf>
-                            <ExampleText>We live in a data driven generation where big data, data mining and
-                                artificial intelligence are revolutionizing the ways we obtain value from data.
-                            </ExampleText>
-                            <ButtonContainer><BlueButton>get started</BlueButton></ButtonContainer>
-                        </ExampleRightHalf>
+                        <ContentBox>
+                            <ExampleGraphBox>
+                                <RadarChartResult />
+                            </ExampleGraphBox>
+                            <ExampleRightHalf>
+                                <ExampleText>We live in a data driven generation where big data, data mining and
+                                    artificial intelligence are revolutionizing the ways we obtain value from data.<br/><br/>
+                                    Syntheticus is a powerful tool, that unlocks the power of your data, while providing full compliance with regulations on privacy and security.
+                                </ExampleText>
+                                <ButtonContainer><BlueButton><Link to="/login" style={{ textDecoration: 'none', color: '#fff' }}>get started</Link></BlueButton></ButtonContainer>
+                            </ExampleRightHalf>
+                        </ContentBox>
+                        <BottomBar />
                     </SecondContainer>
                     <ThirdContainer>
+                        <ContentBlock1>
+                            <Text>Syntheticus makes analysis of data on a large scale possible - even when this data is confidential.</Text>
+
+                        </ContentBlock1>
+                        <ContentBlock2>
+                            <Text>Synthetic data helps you in making better decisions,<br/> allowing anyone to leverage the equivalent of an army of analysts. </Text>
+                        </ContentBlock2>
                     </ThirdContainer>
                 </ContentWrapper>
                 <Footer />
