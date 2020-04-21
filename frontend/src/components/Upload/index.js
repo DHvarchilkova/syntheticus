@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import Body from '../Body';
 import Dropzone from '../Dropzone/dropzone';
+import MyUploader from "../Dropzone2";
 import { MenuButton } from "../../styles/GlobalButtons";
 import { WhiteButton} from "../../styles/GlobalButtons";
 
@@ -59,7 +60,7 @@ class Upload extends Component {
                     <UploadBlock>
                             <DragDropField>
                                 <MenuText>Submit A Dataset (.gzip)</MenuText>
-                                <Dropzone />
+                                <MyUploader />
                                 <UploadButton>upload</UploadButton>
                             </DragDropField>
                     </UploadBlock>
