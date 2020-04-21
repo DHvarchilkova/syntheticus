@@ -51,7 +51,7 @@ const SuccessText = styled.p`
 `;
 
 const SuccessSubText = styled.p`
-    margin-top: 50px;
+    margin-top: 20px;
     text-align: center;
 `;
 
@@ -107,25 +107,28 @@ class ChooseOptions extends Component {
                     <UploadBlock>
                             <DragDropField>
                                 <UploadSuccess>
-                                    <SuccessText>Your Dataset Was Uploaded Successfully.</SuccessText>
-                                    <SuccessSubText>Below, please specify your choice for Model Type and Number of Rows.</SuccessSubText>
+                                    <SuccessText>Your Dataset Was Uploaded Successfully</SuccessText>
+                                    <SuccessSubText>Your Dataset consists of ... rows</SuccessSubText>
+                                    <SuccessSubText>Choose the Model Type and Number of Rows to be processed so that the synthetic data to be generated</SuccessSubText>
                                 </UploadSuccess>
                                 <ChooseModelRows>
                                     <ChooseModel>
                                         <MenuText>Select Model Type</MenuText>
                                          <DropDownMenu>
                                             <option>Select...</option>
-                                            <option>A</option>
-                                            <option>B</option>
-                                            <option>C</option>
-                                            <option>D</option>
-                                            <option>E</option>
-                                            <option>F</option>
+                                            <option>CTGAN</option>
+                                            <option>TSGAN</option>
+                                            <option>OTHER METHODS SOON</option>
                                          </DropDownMenu>
                                     </ChooseModel>
                                     <ChooseRows>
                                         <MenuText>Choose Number of Rows</MenuText>
-                                        <RowsInput type="text" placeholder="The dataset you uploaded has 500 rows." />
+                                        <DropDownMenu>
+                                            <option>Select...</option>
+                                            <option>1000</option>
+                                            <option>5000</option>
+                                            <option>OTHER OPTIONS</option>
+                                         </DropDownMenu>
                                     </ChooseRows>
                                 </ChooseModelRows>
                                 <WhiteButton style={{marginBottom: "5%"}}>Start Syntheticus</WhiteButton>
