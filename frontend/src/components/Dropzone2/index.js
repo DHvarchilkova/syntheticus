@@ -5,7 +5,7 @@ import Dropzone from 'react-dropzone-uploader'
 
 const MyUploader = () => {
   // specify upload params and url for your files
-  const getUploadParams = ({ meta }) => { return { url: 'http://syntheticus.propulsion-learn.ch/backend/api/upload' } }
+  const getUploadParams = ({ meta }) => { return { url: 'https://syntheticus.propulsion-learn.ch/backend/api/datasets/upload' } }
 
   // called every time a file's `status` changes
   const handleChangeStatus = ({ meta, file }, status) => { console.log(status, meta, file) }

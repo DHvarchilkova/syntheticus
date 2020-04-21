@@ -99,7 +99,7 @@ const Login = (props) => {
                                         onChange={(e) => setEmail(e.currentTarget.value)}/>
                         </UserNameField>
                         <UserNameField>
-                            <LoginInput type="text" placeholder="password"
+                            <LoginInput type="password" placeholder="password"
                                         onChange={(e) => setPassword(e.currentTarget.value)}/>
                         </UserNameField>
                         <LoginButton type='submit' onClick={userLoginHandler}>login</LoginButton>
