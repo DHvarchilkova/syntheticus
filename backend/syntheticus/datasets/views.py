@@ -14,7 +14,7 @@ class DatasetUploadView(APIView):
     parser_class = (FileUploadParser,)
     permission_classes = []
 
-    def put(self, request, *args, **kwargs):
+    def post(self, request, *args, **kwargs):
         dataset_serializer = DatasetSerializer(data=request.data)
         user_id = request.POST.get('user', '')
         user = User.objects.get(id=user_id)
