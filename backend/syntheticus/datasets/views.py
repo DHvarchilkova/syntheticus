@@ -38,10 +38,26 @@ class DatasetUploadView(APIView):
         else:
             return Response(dataset_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+class GetGeneratedDatasetsView(APIView):
+
+    def get(self, request, *args, **kwargs):
+        username = kwargs['username']
+        method = kwargs['method']
+        filename = kwargs['filename']
+        filename = filename[0:-7]
+        ds_full_url = settings.DATASCIENCE_URL + "fit_generate/" + username
+        ds_full_url += "/" + method + "/" + filename
+        r = requests.get(url=ds_full_url)
+        if r.status_code != 200:
+            return Response(status=status.HTTP_418_IM_A_TEAPOT)
+        return Response(data=r.text, status=status.HTTP_200_OK, content_type="application/json")
+
 
 class ListDatasetsView(APIView):
 
     def get(self, request, *args, **kwargs):
+        data = request.data
+        data['user'] = request.user.id
         ds_full_url = settings.DATASCIENCE_URL + "list_datasets/" + request.user.username
         r = requests.get(url=ds_full_url)
         if r.status_code != 200:

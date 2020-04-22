@@ -19,7 +19,11 @@ export const userLoginAction = ({ email, password }) => (dispatch, getState) => 
   .then( response => {
       dispatch(userLoginDispatch(response.data.access))
       localStorage.setItem('token', response.data.access)
-      return response;
+      localStorage.setItem('username', response.data.user.username)
+      localStorage.setItem('email', response.data.user.email)
+       console.log('me.username: '+ localStorage.getItem('username'))
+      console.log('me.email: '+ localStorage.getItem('email'))
+      return response
   }).catch(error => {
       dispatch(userLoginError(error))
   })

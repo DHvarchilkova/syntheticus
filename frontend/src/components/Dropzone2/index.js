@@ -1,3 +1,4 @@
+
 import React from "react";
 import 'react-dropzone-uploader/dist/styles.css';
 import Dropzone from 'react-dropzone-uploader';
@@ -6,11 +7,11 @@ import Dropzone from 'react-dropzone-uploader';
 const MyUploader = () => {
   // specify upload params and url for your files
   const getUploadParams = ({ meta, file }) => {
-    console.log(file)
     const token = localStorage.getItem('token')
     const headers = {Authorization: `Bearer ${token}`}
     const body = new FormData()
     body.append('dataset', file)
+    localStorage.setItem('lastUploadedFile', file.name)
     return { url: 'https://syntheticus.propulsion-learn.ch/backend/api/datasets/upload', headers, body } }
 
   // called every time a file's `status` changes

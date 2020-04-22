@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+import { connect } from 'react-redux';
+import { useHistory } from "react-router-dom"
 import styled from 'styled-components';
 
 import Body from '../Body';
@@ -6,6 +9,7 @@ import { MenuButton } from "../../styles/GlobalButtons";
 import { WhiteButton} from "../../styles/GlobalButtons";
 
 import stock3 from '../../assets/stock3.jpg';
+import {userLoginAction} from "../../store/actions/loginActions";
 
 
 const FirstContainer = styled.div`
@@ -99,45 +103,62 @@ const RowsInput = styled.input`
 `;
 
 
-class ChooseOptions extends Component {
-    render() {
-        return (
-            <Body>
-                <FirstContainer>
-                    <UploadBlock>
-                            <DragDropField>
-                                <UploadSuccess>
-                                    <SuccessText>Your Dataset Was Uploaded Successfully</SuccessText>
-                                    <SuccessSubText>Your Dataset consists of ... rows</SuccessSubText>
-                                    <SuccessSubText>Choose the Model Type and Number of Rows to be processed so that the synthetic data to be generated</SuccessSubText>
-                                </UploadSuccess>
-                                <ChooseModelRows>
-                                    <ChooseModel>
-                                        <MenuText>Select Model Type</MenuText>
-                                         <DropDownMenu>
-                                            <option>Select...</option>
-                                            <option>CTGAN</option>
-                                            <option>TSGAN</option>
-                                            <option>OTHER METHODS SOON</option>
-                                         </DropDownMenu>
-                                    </ChooseModel>
-                                    <ChooseRows>
-                                        <MenuText>Choose Number of Rows</MenuText>
-                                        <DropDownMenu>
-                                            <option>Select...</option>
-                                            <option>1000</option>
-                                            <option>5000</option>
-                                            <option>OTHER OPTIONS</option>
-                                         </DropDownMenu>
-                                    </ChooseRows>
-                                </ChooseModelRows>
-                                <WhiteButton style={{marginBottom: "5%"}}>Start Syntheticus</WhiteButton>
-                            </DragDropField>
-                    </UploadBlock>
-                </FirstContainer>
-            </Body>
-        )
+const ChooseOptions = () => {
+    const history = useHistory();
+
+    const getGeneratedData = async (e) => {
+        console.log("in getGeneratedData")
+        const token = localStorage.getItem('token')
+        const headers = {Authorization: `Bearer ${token}`}
+        const username = localStorage.getItem('username')
+        const datasetName = localStorage.getItem('lastUploadedFile')
+        const modelType = 'CTGAN'
+        const response = await axios.get(`http://localhost:8000/backend/api/datasets/get_generated/${username}/${modelType}/${datasetName}`,
+            { headers: {'Authorization': `Bearer ${token}`}})
+        console.log(response)
+
+        if (response) {
+            history.push("/processing");
+        }
     }
+    return (
+        <Body>
+            <FirstContainer>
+                <UploadBlock>
+                    <DragDropField>
+                        <UploadSuccess>
+                            <SuccessText>Your Dataset Was Uploaded Successfully</SuccessText>
+                            <SuccessSubText>Choose the Model Type and Number of Rows to be processed so that the
+                                synthetic data to be generated</SuccessSubText>
+                        </UploadSuccess>
+                        <ChooseModelRows>
+                            <ChooseModel>
+                                <MenuText>Select Model Type</MenuText>
+                                <DropDownMenu>
+                                    <option>Select...</option>
+                                    <option>CTGAN</option>
+                                    <option>TSGAN</option>
+                                    <option>OTHER METHODS SOON</option>
+                                </DropDownMenu>
+                            </ChooseModel>
+                            <ChooseRows>
+                                <MenuText>Choose Number of Rows</MenuText>
+                                <DropDownMenu>
+                                    <option>Select...</option>
+                                    <option>1000</option>
+                                    <option>5000</option>
+                                    <option>OTHER OPTIONS</option>
+                                </DropDownMenu>
+                            </ChooseRows>
+                        </ChooseModelRows>
+                        <WhiteButton type='submit' onClick={getGeneratedData} style={{marginBottom: "5%"}}>Start Syntheticus</WhiteButton>
+                    </DragDropField>
+                </UploadBlock>
+            </FirstContainer>
+        </Body>
+    )
+
 }
 
-export default ChooseOptions;
+
+export default connect()(ChooseOptions);
