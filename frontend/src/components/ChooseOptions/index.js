@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 import Body from '../Body';
-import { MenuButton } from "../../styles/GlobalButtons";
 import { WhiteButton} from "../../styles/GlobalButtons";
 
 import stock3 from '../../assets/stock3.jpg';
@@ -131,7 +131,7 @@ class ChooseOptions extends Component {
                                          </DropDownMenu>
                                     </ChooseRows>
                                 </ChooseModelRows>
-                                <WhiteButton style={{marginBottom: "5%"}}>Start Syntheticus</WhiteButton>
+                                <Link to="/processing"><WhiteButton style={{marginBottom: "5%"}}>Start Syntheticus</WhiteButton></Link>
                             </DragDropField>
                     </UploadBlock>
                 </FirstContainer>

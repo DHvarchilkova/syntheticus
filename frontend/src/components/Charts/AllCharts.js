@@ -24,7 +24,6 @@ const GraphContainer = styled.div`
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    padding-left: 120px;
     background-color: #ffffff;
 `;
 
