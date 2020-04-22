@@ -6,7 +6,9 @@ import './spinner.css';
 class Spinner extends Component {
     render() {
         return (
-            <div className='spinner'></div>
+            <div className='container'>
+                <div className='loader'></div>
+            </div>
         )
     }
 }
