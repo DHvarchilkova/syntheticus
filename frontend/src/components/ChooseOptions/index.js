@@ -3,9 +3,9 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import { useHistory } from "react-router-dom"
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 import Body from '../Body';
-import { MenuButton } from "../../styles/GlobalButtons";
 import { WhiteButton} from "../../styles/GlobalButtons";
 
 import stock3 from '../../assets/stock3.jpg';
