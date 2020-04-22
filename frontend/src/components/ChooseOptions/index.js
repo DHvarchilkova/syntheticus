@@ -113,7 +113,7 @@ const ChooseOptions = () => {
         const username = localStorage.getItem('username')
         const datasetName = localStorage.getItem('lastUploadedFile')
         const modelType = 'CTGAN'
-        const response = await axios.get(`http://localhost:8000/backend/api/datasets/get_generated/${username}/${modelType}/${datasetName}`,
+        const response = await axios.get(`http://104.248.137.182:5001/fit_generate/${username}/${modelType}/${datasetName}`,
             { headers: {'Authorization': `Bearer ${token}`}})
         console.log(response)
 

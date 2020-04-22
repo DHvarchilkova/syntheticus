@@ -132,7 +132,7 @@ MEDIA_URL = '/media-files/'
 MEDIA_ROOT = '/media-files'
 STATIC_ROOT = '/static-files'
 
-DATASCIENCE_URL = 'http://212.51.155.70:5001/'
+DATASCIENCE_URL = 'http://104.248.137.182:5001/'
 
 AUTH_USER_MODEL = 'users.User'
 
