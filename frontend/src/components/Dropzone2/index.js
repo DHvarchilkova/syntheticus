@@ -27,6 +27,10 @@ const MyUploader = () => {
       getUploadParams={getUploadParams}
       onChangeStatus={handleChangeStatus}
       onSubmit={handleSubmit}
+      inputContent={'Drag a dataset file here for immediate upload.'}
+      styles={{
+        dropzoneActive: {background: '-webkit-linear-gradient(#63c3ff, #8088fd)'}
+      }}
     />
   )
 }
