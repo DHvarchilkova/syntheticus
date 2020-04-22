@@ -3,7 +3,7 @@ import { ResponsiveHeatMap } from '@nivo/heatmap';
 
 
 const data = [
-    {"name": " ?", "real": 5.025125628140704, "synthetic": 10.5},
+    {"name": " Other", "real": 5.025125628140704, "synthetic": 10.5},
     {"name": " Federal-gov", "real": 5.527638190954774, "synthetic": 12.5},
     {"name": " Local-gov", "real": 6.030150753768844, "synthetic": 12.5},
     {"name": " Private", "real": 8.34170854271356, "synthetic": 15.0},
@@ -17,7 +17,7 @@ export default class HeatMap2Result extends PureComponent {
             <ResponsiveHeatMap
                 data={data}
                 keys={[
-                    '?',
+                    'Other',
                     'Federal-gov',
                     'Local-gov',
                     'Private',

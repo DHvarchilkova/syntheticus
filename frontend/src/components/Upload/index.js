@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 import Body from '../Body';
-import Dropzone from '../Dropzone/dropzone';
 import MyUploader from "../Dropzone2";
-import { MenuButton } from "../../styles/GlobalButtons";
 import { WhiteButton} from "../../styles/GlobalButtons";
 
 import stock3 from '../../assets/stock3.jpg';
@@ -20,24 +19,22 @@ const FirstContainer = styled.div`
 
 const UploadBlock = styled.div`
     width: 100%;
-    height: 77vh;
-    margin-top: 16.5vh;
-    background-color: rgba(242, 242, 242, 0.9);
+    height: 67vh;
+    margin-top: 26.5vh;
     display: flex;
     justify-content: center;
 `;
 
 const DragDropField = styled.div`
-    height: 80%;
-    width: 85%;
+    height: 60%;
+    width: 35%;
     margin-top: 4%;
     background: #ffffff;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 `;
-
 
 const MenuText = styled.p`
     font-size: 1.2em;
@@ -48,7 +45,6 @@ const MenuText = styled.p`
 const UploadButton = styled(WhiteButton)`
     width: 165px;
     height: 40px;
-    margin-bottom: 50px;
 `;
 
 
@@ -59,9 +55,9 @@ class Upload extends Component {
                 <FirstContainer>
                     <UploadBlock>
                             <DragDropField>
-                                <MenuText>Submit A Dataset (.gzip)</MenuText>
+                                <MenuText>Submit A Dataset (.csv.gz)</MenuText>
                                 <MyUploader />
-                                <UploadButton>upload</UploadButton>
+                                <Link to="/specify"><UploadButton>next ></UploadButton></Link>
                             </DragDropField>
                     </UploadBlock>
                 </FirstContainer>

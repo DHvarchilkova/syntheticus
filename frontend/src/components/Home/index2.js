@@ -115,6 +115,7 @@ const BottomBar = styled.div`
 `;
 
 const ThirdContainer = styled.div`
+const ThirdContainer = styled.div\`
     width: 100%;
     height: 84vh;
     display: flex;
@@ -125,37 +126,6 @@ const ThirdContainer = styled.div`
     background-repeat: no-repeat;
 `;
 
-const ContentBlock1 = styled.div`
-    width: 100%;
-    height: 20vh;
-    margin-top: 11vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(242, 242, 242, 0.9);
-`;
-
-const ContentBlock2 = styled.div`
-    width: 100%;
-    height: 20vh;
-    margin-bottom: 11vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(242, 242, 242, 0.9);
-`;
-
-const Mapbox = styled.img`
-    width: 75%;
-    height: 35%;
-    margin-top: 7%;
-`;
-
-const Text = styled.p`
-    width: 75%;
-    margin-top: 10px;
-    font-size: 24px;
-`;
 
 class Home2 extends Component {
     render() {

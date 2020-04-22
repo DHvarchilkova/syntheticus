@@ -8,6 +8,7 @@ import crowd from '../../assets/crowd.jpg';
 import graph from '../../assets/graph.jpg';
 import earth from '../../assets/earth.jpg';
 
+
 const ContentContainer=styled.div`
     width: 100%;
     height: 95%;
@@ -24,7 +25,7 @@ const LeftContainer=styled.div`
     flex-direction: column;
     align-items: center;
     margin-top: 12%;
-    background-color: rgba(242, 242, 242, 0.1);
+
 `;
 
 const RightContainer=styled.div`
@@ -34,7 +35,7 @@ const RightContainer=styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgba(242, 242, 242, 0.1);
+
 `;
 
 const ExplainerHeadline = styled.p`
@@ -60,12 +61,12 @@ const ExplainerText = styled.p`
     font-size: 1.2em;
     line-height: 1.6em;
     text-shadow: 1px 1px 2px rgb(99,195,255);
+    text-align: justify;
 `;
 
 const ExplainerImage = styled.img`
     width: 30%;
     height: 90%;
-    background-color: red;
 `;
 
 
@@ -98,7 +99,7 @@ class HomeExplainer extends Component {
                     </ExplainerBox>
                     <ExplainerBox>
                         <ExplainerImage src={finance} />
-                        <ExplainerText><br/>- Financial services, by making the testing the effectiveness of new fraud detection methods possible.</ExplainerText>
+                        <ExplainerText><br/>- Financial services, for example by making testing the effectiveness of new fraud detection methods possible.</ExplainerText>
                     </ExplainerBox>
                      <ExplainerBox>
                         <ExplainerImage src={medicine} />
