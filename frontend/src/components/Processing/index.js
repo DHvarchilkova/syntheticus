@@ -11,7 +11,7 @@ const FirstContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content:center;
+    justify-content: center;
     background: linear-gradient(270deg, #63c3ff, #8088fd, #82ca9d);
     background-size: 400% 400%;
     -webkit-animation: AnimationName 6s ease infinite;
@@ -40,7 +40,7 @@ const TextField=styled.p`
     font-size: 24px;
     color: #ffffff;
     text-align: center;
-    margin-top: 3vh;
+    margin-top: 8vh;
 `;
 
 
@@ -51,6 +51,7 @@ class Processing extends Component {
                 <FirstContainer>
                     <Spinner />
                     <TextField>We are currently processing your dataset.<br/><br/>
+                    This may take a few moments, depending on the size.<br/><br/>
                     The results will be displayed and downloadable soon.</TextField>
                 </FirstContainer>
             </Body>

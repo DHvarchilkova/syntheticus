@@ -57,7 +57,7 @@ class Upload extends Component {
                             <DragDropField>
                                 <MenuText>Submit A Dataset (.csv.gz)</MenuText>
                                 <MyUploader />
-                                <Link to="/specify"><UploadButton>upload</UploadButton></Link>
+                                <Link to="/specify"><UploadButton>next ></UploadButton></Link>
                             </DragDropField>
                     </UploadBlock>
                 </FirstContainer>
