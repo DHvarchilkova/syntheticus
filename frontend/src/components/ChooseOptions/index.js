@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import Axios from '../../axios';
 import { connect } from 'react-redux';
 import { useHistory } from "react-router-dom"
 import styled from 'styled-components';
@@ -113,7 +113,8 @@ const ChooseOptions = () => {
         const username = localStorage.getItem('username')
         const datasetName = localStorage.getItem('lastUploadedFile')
         const modelType = 'CTGAN'
-        const response = await axios.get(`http://104.248.137.182:5001/fit_generate/${username}/${modelType}/${datasetName}`,
+        // const response = await axios.get(`http://104.248.137.182:5001/fit_generate/${username}/${modelType}/${datasetName}`,
+        const response = await Axios.get(`datasets/get_generated/${username}/${modelType}/${datasetName}`,
             { headers: {'Authorization': `Bearer ${token}`}})
         console.log(response)
 
