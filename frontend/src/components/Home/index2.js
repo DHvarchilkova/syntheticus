@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 import MainHeader from '../MainHeader';
 import Footer from '../Footer';
+import HomeExplainer from "../HomeExplainer";
 import { BlueButton } from '../../styles/GlobalButtons';
 
 import RadarChartResult from "../Charts/RadarChartResult";
@@ -87,8 +88,8 @@ const ButtonContainer = styled.div`
 
 const BottomBar = styled.div`
     width: 100%;
-    height: 10vh;
-    margin-top: 40px;
+    height: 3vh;
+    margin-top: 55px;
     box-shadow: 0 0 15px 10px #8088fd;
     background: linear-gradient(270deg, #63c3ff, #8088fd, #82ca9d);
     background-size: 400% 400%;
@@ -188,13 +189,7 @@ class Home2 extends Component {
                         <BottomBar />
                     </SecondContainer>
                     <ThirdContainer>
-                        <ContentBlock1>
-                            <Text>Syntheticus makes analysis of data on a large scale possible - even when this data is confidential.</Text>
-
-                        </ContentBlock1>
-                        <ContentBlock2>
-                            <Text>Synthetic data helps you in making better decisions,<br/> allowing anyone to leverage the equivalent of an army of analysts. </Text>
-                        </ContentBlock2>
+                       <HomeExplainer />
                     </ThirdContainer>
                 </ContentWrapper>
                 <Footer />
