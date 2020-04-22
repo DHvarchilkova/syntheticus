@@ -8,6 +8,7 @@ import crowd from '../../assets/crowd.jpg';
 import graph from '../../assets/graph.jpg';
 import earth from '../../assets/earth.jpg';
 
+
 const ContentContainer=styled.div`
     width: 100%;
     height: 95%;
@@ -65,7 +66,6 @@ const ExplainerText = styled.p`
 const ExplainerImage = styled.img`
     width: 30%;
     height: 90%;
-    background-color: red;
 `;
 
 
