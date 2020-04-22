@@ -115,6 +115,7 @@ const BottomBar = styled.div`
 `;
 
 const ThirdContainer = styled.div`
+const ThirdContainer = styled.div\`
     width: 100%;
     height: 84vh;
     display: flex;
